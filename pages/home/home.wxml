@@ -1,0 +1,9 @@
+<van-calendar
+  show-title='{{ false }}'
+  poppable="{{ false }}"
+  show-confirm="{{ false }}"
+  class="calendar"
+  row-height="50"
+  max-date='{{maxDate}}'
+  bind:confirm="onConfirm"
+ />

@@ -1,0 +1,12 @@
+{
+  "usingComponents": {
+    "van-field": "/@vant/weapp/field",
+    "van-button":"@vant/weapp/button",
+    "van-picker":"@vant/weapp/picker",
+    "van-row":"@vant/weapp/row",
+    "van-col":"@vant/weapp/col",
+    "van-notify":"@vant/weapp/notify",
+    "van-toast":"@vant/weapp/toast"
+  },
+  "navigationBarTitleText": "微日程密码找回" 
+}

@@ -1,0 +1,12 @@
+<!--pages/my/my.wxml-->
+<van-notice-bar
+ mode="closeable"
+  left-icon="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1585416302142&di=70ee33803160fd38a72425901b3bd8d0&imgtype=0&src=http%3A%2F%2Fku.90sjimg.com%2Felement_origin_min_pic%2F01%2F36%2F26%2F07573c0d9de2aeb.jpg"
+  text="欢迎您使用小程序《微日程管理》体验版,喜欢可以分享给身边的朋友哦~"
+/>
+<van-image
+  round
+  width="5rem"
+  height="5rem"
+  src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3636642746,3443644344&fm=26&gp=0.jpg"
+/>

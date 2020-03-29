@@ -1,0 +1,40 @@
+
+<view class="container"> 
+  <view class="login-icon">  
+    <image class="login-img" src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1703930876,1713551480&fm=26&gp=0.jpg"></image>  
+  </view>  
+  <view class="login-from">  
+  <!-- <form bindsubmit="formSubmit" class='form'> -->
+    <view class="myno">
+      <view class="input_row weui-cell_input">
+      <image class="nameImage" src="/images/yonghu.png"></image>
+          <view class="weui-cell__bd">
+              <input class="weui-input" name="no" bindinput="noinput" value='{{no}}' placeholder="请输入用户名" placeholder-style="color:white;" />
+          </view>
+      </view>
+    </view>
+    <view class="mypwd">
+      <view class="input_row weui-cell_input">
+      <image class="nameImage" src="/images/mima.png"></image>
+          <view class="weui-cell__bd">
+              <input class="weui-input" type="password" name="pwd" bindinput="pwdinput" placeholder="请输入密码" placeholder-style="color:white;" value='{{pwd}}'/>
+          </view>
+      </view>
+    </view>
+    <view class="wj_pasd">
+      <text bindtap="wanji" style="blue;color:white" >忘记密码</text>
+    </view> 
+ 
+     <!--按钮-->  
+     <view class="bttons">
+        <view class="loginBtnView">  
+          <button style="background-color: red;blue;color:white" class="loginBtn" size="{{primarySize}}" bindtap="register"  >注册</button>  
+        </view>  
+        <view class="loginBtnView">  
+          <button style="background-color: #3153BF;color:white" class="loginBtn" size="{{primarySize}}"  bindtap="login" disabled='{{disabled}}'>登录</button>  
+        </view>  
+    </view>
+    <!-- </form> -->
+  
+  </view>  
+</view>  

@@ -1,0 +1,67 @@
+ <view class="container"> 
+  <view class="login-icon">  
+      <image class="login-img" src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1703930876,1713551480&fm=26&gp=0.jpg"></image> 
+    </view>  
+  <van-cell-group>
+    <van-field
+      value="{{ username }}"
+      bind:change="changeusername"
+      required
+      clearable
+      label="用户名:"
+      icon="question-o"
+      placeholder="请输入用户名"
+      bind:click-icon="onClickIcon"
+    />
+    <van-field
+      value="{{ userphone }}"
+      bind:change="changeuserphone"
+      required
+      clearable
+      label="手机号:"
+      icon="question-o"
+      placeholder="请输入手机号"
+      bind:click-icon="onClickIcon"
+    />
+
+    <van-field
+      value="{{ userCode }}"
+      bind:change="changeuserCode"
+      center
+      required
+      clearable
+      label="短信验证码:"
+      placeholder="请输入短信验证码"
+      border="{{ false }}"
+      use-button-slot
+    >
+      <van-button slot="button" bindtap="faCode" disabled='{{isDisabled}}' size="small" type="primary">{{showcode}}</van-button>
+    </van-field>
+    <van-field
+      value="{{ userpass }}"
+      bind:change="changeuserpass"
+      type="password"
+      label="密码:"
+      placeholder="请输入密码"
+      required
+      border="{{ false }}"
+      clearable
+    />
+      <van-field
+      value="{{ userpassword }}"
+      bind:change="changeuserpassword"
+      type="password"
+      label="确认密码:"
+      placeholder="请再次输入密码"
+      required
+      clearable
+      border="{{ false }}"
+    />
+  </van-cell-group>
+  <van-row class='but'>
+    <van-col  span="8" offset="10"><van-button bindtap="register" color="linear-gradient(to right, #4bb0ff, #6149f6)">立即注册</van-button></van-col>
+  </van-row>
+  <van-notify id = "van-notify" />
+  <van-toast id="van-toast" />
+ </view>
+ 

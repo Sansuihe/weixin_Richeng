@@ -1,0 +1,97 @@
+
+page{
+  height: 100%;
+  background-size:100%;
+  background-repeat:no-repeat;
+
+ -moz-background-size:100% 100%;
+  background-image: url('https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2807052394,944017971&fm=26&gp=0.jpg');
+}
+ 
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  box-sizing: border-box;
+  /* background-color: #f2f2f2;     */
+} 
+ 
+/*登录图片*/
+.login-icon{
+  flex: none;
+  margin: 0 auto;
+  margin-top: 200rpx;
+}
+.login-img{
+  width: 220rpx;
+  height: 220rpx;
+  border-radius: 110rpx;
+  opacity: 0.6;
+}
+ 
+/*表单内容*/
+.login-from {
+  margin-top: 50px;
+  flex: auto;
+  height:100%;
+}
+ 
+/* 输入框 */
+.myno{
+  width: 70%;
+  height: 80rpx;
+  margin: 30rpx auto;
+  border:1px solid #ccc;
+  border-radius: 50rpx;
+}
+.mypwd{
+  width: 70%;
+  height: 80rpx;
+  margin: 0 auto;
+  border:1px solid #ccc;
+  border-radius: 50rpx;
+}
+.wj_pasd{
+  width: 70%;
+  margin-top: 10rpx;
+  text-align: right;
+  color: gray;
+  font-size: 14px;
+}
+.input_row {
+  display: flex;
+  height: 80rpx;
+  padding-left: 50rpx;
+  align-items: center;  /* 垂直居中 */
+}
+/*按钮*/
+.bttons{
+  display: flex;
+  justify-content: center;  /* 水平居中 */
+  align-items: center;  /* 垂直居中 */
+}
+.loginBtnView {
+  width: 280rpx;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+ 
+.loginBtn {
+  width: 90%;
+  height: 80rpx;
+  line-height: 80rpx;
+  margin-top: 35px;
+  color: #fff;
+  background-color:#7e8ef0;
+  border: 0.1rpx solid #ccc;
+  border-radius: 40rpx;
+}
+ 
+ 
+.nameImage, .keyImage {
+  margin-right: 10px;
+  width: 20px;
+  height: 20px
+}

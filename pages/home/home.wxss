@@ -1,0 +1,4 @@
+/* pages/home/home.wxss */
+.calendar {
+  --calendar-height: 320px;
+}
