@@ -1,3 +1,5 @@
+import {Api} from '../../utils/api';
+import utlis from '../../utils/util';
 const app = getApp()
 Page({
   /**
@@ -26,6 +28,15 @@ Page({
     }
   },
   login(){
+    // console.log(Api.login);
+    // var mydata = {
+    //   "type": '1',
+    // }
+    // utlis.post(Api.login,mydata,false).then((res)=>{
+    //   console.log('=>',res);
+    // }).catch((res)=>{
+    //   console.log('=>',res);
+    // });
     wx.showLoading({title: '登录中...',})
     wx.switchTab({    //跳转到tabBar页面，并关闭其他所有tabBar页面
       url:"/pages/my/my"})

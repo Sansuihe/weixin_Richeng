@@ -53,7 +53,7 @@ page{
   border-radius: 50rpx;
 }
 .wj_pasd{
-  width: 70%;
+  width: 80%;
   margin-top: 10rpx;
   text-align: right;
   color: gray;

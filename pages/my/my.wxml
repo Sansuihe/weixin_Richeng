@@ -4,9 +4,80 @@
   left-icon="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1585416302142&di=70ee33803160fd38a72425901b3bd8d0&imgtype=0&src=http%3A%2F%2Fku.90sjimg.com%2Felement_origin_min_pic%2F01%2F36%2F26%2F07573c0d9de2aeb.jpg"
   text="欢迎您使用小程序《微日程管理》体验版,喜欢可以分享给身边的朋友哦~"
 />
-<van-image
-  round
-  width="5rem"
-  height="5rem"
-  src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3636642746,3443644344&fm=26&gp=0.jpg"
-/>
+ <view class="header">
+    <view class="user_box" bindtap='joinVip'>
+        <view class="logo">
+          <image src="../../images/person.png" ></image>
+        </view>
+        <text class='headname'>测试号 </text>
+    </view>
+  <view class="nav">
+    <view class="item">
+      <view class='wallet'>
+        <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;</text>
+        <image src='../../images/fri.png' class='iimg'></image>
+        <text>个人资料</text>
+      </view>
+    </view>
+    
+    <!-- <view class="item">
+      <view class='wallet'>
+        <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;</text>
+        <image src='../../images/shou.png' class='iimg'></image>
+        <text>我的收藏</text>
+      </view>
+    </view> -->
+    <!-- <view class="item">
+      <view class='wallet'>
+        <text class='icon-moneybag icon'></text>
+        <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;</text>
+        <image src='../../images/fenxi.png' class='iimg'></image>
+        <text>分析报告</text>
+      </view>
+    </view> -->
+
+    <!-- <view class="item">
+      <view class='wallet'>
+        <text class='icon-form icon'></text>
+        <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;</text>
+        <image src='../../images/fun.png' class='iimg'></image>
+        <text>新鲜功能</text>
+      </view>
+    </view> -->
+
+    <view class="item">
+      <view class='wallet'>
+        <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;</text>
+        <image src='../../images/fuzhu.png' class='iimg'></image>
+        <text>管理员设置</text>
+      </view>
+    </view>
+    <view class="item" >
+      <view class='wallet'>
+        <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;</text>
+        <image src='../../images/safe.png' class='iimg'></image>
+        <text>账号安全</text>
+      </view>
+    </view>
+    <view class="item">
+      <view class='wallet'>
+      <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;</text>
+      <image src='../../images/yijian.png' class='iimg'></image>
+      <text>意见反馈</text></view>
+    </view>
+    <view class="item">
+      <view class='wallet'>
+        <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;</text>
+        <image src='../../images/guanyu.png' class='iimg'></image>
+        <text>关于我们</text>
+      </view>
+    </view>
+    <view class="item">
+      <view class='wallet'>
+        <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;</text>
+        <image src='../../images/kefu.png' class='iimg'></image>
+        <text>联系客服</text>
+      </view>
+    </view>
+  </view>
+</view>
