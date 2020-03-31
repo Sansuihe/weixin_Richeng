@@ -1,2 +1,30 @@
 <!--pages/list/list.wxml-->
-<text>pages/list/list.wxml</text>
+<van-cell value="" icon="shop-o" is-link wx:for="{{list}}">
+  <view slot="title">
+    <view class="van-cell-text">单元格</view>
+  </view>
+</van-cell>
+
+<van-cell value="{{today}}" icon="shop-o" is-link>
+  <view slot="title">
+    <view class="van-cell-text">今日</view>
+  </view>
+</van-cell>
+
+<van-cell value="{{thisWeek}}" icon="records" is-link>
+  <view slot="title">
+    <view class="van-cell-text">本周</view>
+  </view>
+</van-cell>
+
+<van-cell value="{{nextWeek}}" icon="tosend" is-link>
+  <view slot="title">
+    <view class="van-cell-text">下周</view>
+  </view>
+</van-cell>
+
+<van-cell value="{{all}}" icon="notes-o" is-link>
+  <view slot="title">
+    <view class="van-cell-text">所有</view>
+  </view>
+</van-cell>

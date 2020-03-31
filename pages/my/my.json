@@ -2,6 +2,7 @@
   "usingComponents": {
     "van-button":"@vant/weapp/button",
     "van-notice-bar":"@vant/weapp/notice-bar",
-    "van-image":"@vant/weapp/image"
+    "van-image":"@vant/weapp/image",
+    "van-toast":"@vant/weapp/toast"
   }
 }

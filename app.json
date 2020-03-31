@@ -1,13 +1,15 @@
 {
   "pages": [
-    "pages/login/login",  
-    "pages/my/my",
     "pages/home/home",
+    "pages/list/list",
+    "pages/my/my",
+    "pages/login/login",
     "pages/forgetCode/forgetCode",
     "pages/register/register",
-    "pages/list/list",
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/addRicheng/addRicheng",
+    "pages/personal/personal"
   ],
   "tabBar": {  
     "color": "#a9b7b7",  

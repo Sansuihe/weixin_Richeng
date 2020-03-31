@@ -8,5 +8,5 @@
     "van-notify":"@vant/weapp/notify",
     "van-toast":"@vant/weapp/toast"
   },
-  "navigationBarTitleText": "微日程密码找回" 
+  "navigationBarTitleText": "微日程密码修改" 
 }

@@ -1,25 +1,52 @@
 // pages/my/my.js
+import {Api} from '../../utils/api';
+import utlis from '../../utils/util';
+import Toast  from '@vant/weapp/toast/toast';
+
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    name:'',
+  },
 
+  forgetCode(){
+    wx.navigateTo({
+      url: '../forgetCode/forgetCode'
+   })
+  },
+  geRen(){
+    utlis.get(Api.auth,).then((res)=>{
+      if(res.code == 0){
+        console.log('res1==',res)
+        this.setData({
+          name:res.data.name
+        })
+      }else{
+        wx.showLoading({title: res.msg,})
+        setTimeout(function(){wx.hideLoading()},1000)
+      }
+    }).catch((res)=>{
+      console.log('res3==',res)
+      Toast.fail(res.msg);
+    });
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.geRen();
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    
   },
 
   /**

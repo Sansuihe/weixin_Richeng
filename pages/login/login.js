@@ -1,6 +1,6 @@
 import {Api} from '../../utils/api';
 import utlis from '../../utils/util';
-const app = getApp()
+import Toast  from '@vant/weapp/toast/toast';
 Page({
   /**
    * 页面的初始数据
@@ -28,18 +28,25 @@ Page({
     }
   },
   login(){
-    // console.log(Api.login);
-    // var mydata = {
-    //   "type": '1',
-    // }
-    // utlis.post(Api.login,mydata,false).then((res)=>{
-    //   console.log('=>',res);
-    // }).catch((res)=>{
-    //   console.log('=>',res);
-    // });
-    wx.showLoading({title: '登录中...',})
-    wx.switchTab({    //跳转到tabBar页面，并关闭其他所有tabBar页面
-      url:"/pages/my/my"})
+    var that = this;
+    var mydata = {
+      "username": that.data.no,
+      "password": that.data.pwd
+    }
+    utlis.post(Api.login,mydata).then((res)=>{
+      if(res.code == 0){
+        wx.showLoading({title: '登录中...',})
+        setTimeout(function () {
+          wx.switchTab({ url:"/pages/my/my"})
+         }, 1000) //延迟时间 这里是1秒
+      }else{
+        wx.showLoading({title: res.msg,})
+        setTimeout(function(){wx.hideLoading()},1000)
+      }
+    }).catch((res)=>{
+      wx.showLoading({title: res.msg,})
+      setTimeout(function(){wx.hideLoading()},1000)
+    });
   },
   register(){
     wx.navigateTo({

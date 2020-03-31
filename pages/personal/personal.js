@@ -1,43 +1,18 @@
-// pages/list/list.js
-import {Api} from '../../utils/api';
-import utlis from '../../utils/util';
+// pages/personal/personal.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    list:[],
-    all:0,
-    today:0,
-    thisWeek:0,
-    nextWeek:0
+
   },
-  List(){
-    utlis.get(Api.schedule,).then((res)=>{
-      if(res.code == 0){
-        console.log('res1==',res);
-        var res = res.data;
-        this.setData({
-          all:res.all,
-          today:res.today,
-          thisWeek:res.thisWeek,
-          nextWeek:res.nextWeek,
-        })
-      }else{
-        wx.showLoading({title: res.msg,})
-        setTimeout(function(){wx.hideLoading()},1000)
-      }
-    }).catch((res)=>{
-      wx.showLoading({title: res.msg,})
-        setTimeout(function(){wx.hideLoading()},1000)
-    });
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.List()
+
   },
 
   /**

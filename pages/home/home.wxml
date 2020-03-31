@@ -3,7 +3,24 @@
   poppable="{{ false }}"
   show-confirm="{{ false }}"
   class="calendar"
-  row-height="50"
+  row-height="40"
   max-date='{{maxDate}}'
   bind:confirm="onConfirm"
  />
+<view class=" bottom"> </view>
+ <view class="richen">
+    <view>
+        <text class="jiachu">今天日程</text>
+    </view>
+    <view class=" bottom2"> </view>
+    <view wx:if="{{richengList.length == 0}}" class="noimg">
+        <image wx:if="{{richengList.length == 0}}"  mode = 'center' class="noimg" src="../../images/no.jpg" ></image>
+    </view>
+
+ </view>
+
+
+
+ <view class="round-click">
+   <navigator url='/pages/addRicheng/addRicheng' >添加</navigator >
+</view>

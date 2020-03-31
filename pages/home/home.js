@@ -1,4 +1,6 @@
 // pages/home/home.js
+import {Api} from '../../utils/api';
+import utlis from '../../utils/util';
 Page({
 
   /**
@@ -9,7 +11,10 @@ Page({
     show: true,
     minDate: new Date(2020, 4, 1).getTime(),
     maxDate: new Date(2029, 1, 31).getTime(),
-   time:''
+    time:'',
+    show:false,
+    richengList:[]
+   
   },
 
   formatDate(date) {
@@ -24,12 +29,36 @@ Page({
     console.log(event.detail)
     console.log(this.data.time)
   },
+  date(){
+    var that = this;
+    var d = new Date();
+    var date=d.getFullYear() + '-' + ((d.getMonth() + 1) >=10 ?(d.getMonth() + 1) : ('0'+(d.getMonth() + 1))) + '-' + (d.getDate()>=10 ?d.getDate() :('0'+d.getDate())); 
+    console.log(date)
+    utlis.post(Api.date,date,true).then((res)=>{
+      if(res.code == 0){
+        console.log('res1==',res);
+        this.setData({
+          richengList:res.data
+          // all:res.all,
+          // today:res.today,
+          // thisWeek:res.thisWeek,
+          // nextWeek:res.nextWeek,
+        })
+      }else{
+        wx.showLoading({title: res.msg,})
+        setTimeout(function(){wx.hideLoading()},1000)
+      }
+    }).catch((res)=>{
+      wx.showLoading({title: res.msg,})
+        setTimeout(function(){wx.hideLoading()},1000)
+    });
+  },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.date()
   },
 
   /**

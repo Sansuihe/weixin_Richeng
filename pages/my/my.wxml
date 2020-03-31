@@ -7,9 +7,10 @@
  <view class="header">
     <view class="user_box" bindtap='joinVip'>
         <view class="logo">
-          <image src="../../images/person.png" ></image>
+          <open-data type="userAvatarUrl"></open-data>
+          <!-- <image src="../../images/person.png" ></image> -->
         </view>
-        <text class='headname'>测试号 </text>
+        <text class='headname'>{{name}} </text>
     </view>
   <view class="nav">
     <view class="item">
@@ -52,11 +53,11 @@
         <text>管理员设置</text>
       </view>
     </view>
-    <view class="item" >
+    <view bindtap="forgetCode" class="item" >
       <view class='wallet'>
         <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;</text>
         <image src='../../images/safe.png' class='iimg'></image>
-        <text>账号安全</text>
+        <text>找回密码</text>
       </view>
     </view>
     <view class="item">

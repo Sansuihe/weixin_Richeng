@@ -1,6 +1,8 @@
 // pages/register/register.js
 import Notify from '@vant/weapp/notify/notify';
 import Toast  from '@vant/weapp/toast/toast';
+import {Api} from '../../utils/api';
+import utlis from '../../utils/util';
 Page({
   /**
    * 页面的初始数据
@@ -32,7 +34,9 @@ Page({
     console.log(that.data.userpass);
     console.log(that.data.userpassword);
    
-   if (this.data.userCode == '') {
+    if (that.data.userphone.trim().length != 11 || !/^1[3|4|5|6|7|8|9]\d{9}$/.test(that.data.userphone)) {
+      Toast.fail('手机号格式不正确');return
+    }else if (this.data.userCode == '') {
       Toast.fail('请输入验证码');return
     } else if (this.data.userCode != this.data.code) {
       Toast.fail('验证码错误');return
@@ -43,10 +47,29 @@ Page({
     } else if (this.data.userpass != this.data.userpassword) {
       Toast.fail('两次密码不一致');return
     }else{
-      Toast.fail('注册成功！');
-       wx.navigateBack();
-       wx.navigateBack({});
+      that.zhuce();
     }
+  },
+
+  zhuce(){
+    var that = this;
+    var mydata = {
+      'mobile':that.data.userphone,
+      "code": "dode",
+      "password": that.data.userpassword
+    }
+    utlis.post(Api.editUserPassword,mydata,true).then((res)=>{
+      if(res.code == 0){
+        Toast.fail('修改成功！');
+        setTimeout(function () {
+          wx.navigateBack();
+         }, 1000) //延迟时间 这里是1秒
+      }else{
+        Toast.fail(res.msg);
+      }
+    }).catch((res)=>{
+      Toast.fail(res.msg);
+    });
   },
 
   onClickIcon(){
