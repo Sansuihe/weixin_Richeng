@@ -112,6 +112,8 @@ function request(url, data = {}, method = "GET",isJson) {
     })
   });
 }
+
+
 module.exports = {
   formatTime: formatTime,
   request,

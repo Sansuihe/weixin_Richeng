@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/addRicheng/addRicheng",
     "pages/home/home",
     "pages/list/list",
     "pages/my/my",
@@ -8,7 +9,7 @@
     "pages/register/register",
     "pages/index/index",
     "pages/logs/logs",
-    "pages/addRicheng/addRicheng",
+   
     "pages/personal/personal"
   ],
   "tabBar": {  

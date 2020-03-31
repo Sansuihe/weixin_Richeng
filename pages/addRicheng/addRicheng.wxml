@@ -1,2 +1,93 @@
 <!--pages/addRicheng/addRicheng.wxml-->
-<text>pages/addRicheng/addRicheng.wxml</text>
+<van-cell-group>
+  <van-field
+    value="{{ title }}"
+    placeholder="请输入日程标题"
+    border="{{ false }}"
+    bind:change="onChangetitle"
+  />
+</van-cell-group>
+
+<van-cell bind:click='showPop' title="{{jop}}" icon="newspaper-o" border  = '{{true}}' is-link/>
+
+<van-cell-group>
+  <van-field
+     placeholder="请输入地点内容"
+     type="textarea"
+      autosize
+      left-icon="location-o"
+      bind:change="onChangesite"
+      value="{{ site  }}"
+    border="{{ true }}"
+  />
+</van-cell-group>
+<van-row>
+  <van-col span="2"  offset="1" ><view class="juzhog"><van-icon name="clock-o" /></view></van-col>
+  <van-col span="15" ><view class="juzhog">任意</view></van-col>
+  <van-col span="5"><van-switch  class="juzhog" checked="{{ checked }}" size="20px" bind:change="onChange" /></van-col>
+</van-row>
+
+<van-cell-group>
+  <van-cell title="{{time1}}" value="内容"  clickable bind:click = 'times'  data-index="1" />
+  <van-cell title="{{time2}}" value="内容" clickable bind:click = 'times'  data-index="2" border="{{ true }}"/>
+</van-cell-group>
+<van-cell-group>
+  <van-field
+     placeholder="请输入备注内容"
+     type="textarea"
+      autosize
+      left-icon="records"
+      bind:change="onChangecomment "
+      value="{{ comment   }}"
+    border="{{ true }}"
+  />
+</van-cell-group>
+
+<van-cell bind:click='remind' title="提醒 {{remind}}" icon="underway-o" border  = '{{true}}' is-link/>
+
+<van-cell bind:click='repeat' title="重复 {{repeat}}" icon="replay" border  = '{{true}}' is-link/>
+
+<view class="buttons"><van-button round type="info">√</van-button></view>
+
+<van-dialog
+  use-slot
+  title="选择日程列表"
+  show="{{ show }}"
+  show-cancel-button
+  bind:close="onClose"
+  bind:confirm = 'onTrue'
+  show-confirm-button ='{{false}}'
+  show-cancel-button = '{{false}}'
+  closeOnClickOverlay = '{{true}}'
+>
+<!-- confirm-button-open-type="getUserInfo"
+  bind:getuserinfo="getUserInfo" -->
+  <van-cell bind:click='xuanzeliebiao' data-item="{{item}}" wx:for="{{richenglist}}" wx:for-item="item" wx:key="index" title="{{item.title}}" icon="newspaper-o" border='{{true}}' is-link/>
+</van-dialog>
+
+<van-action-sheet show="{{ remindshow }}" title="提醒" bind:close="onClose">
+    <view bindtap='xuanzetixin'  class=" danyuange" data-item="{{item}}" wx:for="{{remindshowList}}" wx:for-item="item" wx:key="index" >
+        <text>{{item.title}}</text>
+        <view style="margin-left='150px'"> <van-icon wx:if='{{item.title === remind}}' name="success" /></view>
+    </view>
+</van-action-sheet>
+
+<van-action-sheet show="{{ repeatshow }}" title="重复" bind:close="onCloserepeat">
+    <view bindtap='xuanzechongfu'  class=" danyuange" data-item="{{item}}" wx:for="{{repeatshowList}}" wx:for-item="item" wx:key="index" >
+        <text>{{item.title}}</text>
+        <view style="margin-left='150px'"> <van-icon wx:if='{{item.title === repeat}}' name="success" /></view>
+    </view>
+</van-action-sheet>
+
+
+<van-action-sheet show="{{ showTime }}" bind:close="onCloseshowTime">
+  <van-datetime-picker
+  type="datetime"
+  value="{{ currentDate }}"
+  min-date="{{ minDate }}"
+  max-date="{{ maxDate }}"
+  bind:input="onInput"
+  bind:confirm='showTime1'
+  bind:cancel='onCloseshowTime'
+/>
+</van-action-sheet>

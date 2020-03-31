@@ -1,1 +1,19 @@
 /* pages/addRicheng/addRicheng.wxss */
+.buttons{
+  margin-top: 30px;
+  text-align: center;
+}
+.danyuange{
+  height: 50px;
+  line-height: 50px;
+  display:flex;
+  align-items:center;/*垂直居中*/
+  justify-content: center;/*水平居中*/
+  border-bottom: solid 1px #ccc;
+}
+.juzhog{
+  height: 40px;
+  line-height: 40px;
+  display:flex;
+  align-items:center;/*垂直居中*/
+}

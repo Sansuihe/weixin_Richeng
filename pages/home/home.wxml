@@ -22,5 +22,5 @@
 
 
  <view class="round-click">
-   <navigator url='/pages/addRicheng/addRicheng' >添加</navigator >
+   <navigator url='/pages/addRicheng/addRicheng?data=1' >添加</navigator >
 </view>
