@@ -1,30 +1,40 @@
 <!--pages/list/list.wxml-->
-<van-cell value="" icon="shop-o" is-link wx:for="{{list}}">
+<!-- <van-cell value="" icon="shop-o" is-link wx:for="{{list}}">
   <view slot="title">
     <view class="van-cell-text">单元格</view>
   </view>
-</van-cell>
+</van-cell> -->
 
-<van-cell value="{{today}}" icon="shop-o" is-link>
+<van-cell value="{{today}}" icon="shop-o" is-link bind:click='today'>
   <view slot="title">
     <view class="van-cell-text">今日</view>
   </view>
 </van-cell>
 
-<van-cell value="{{thisWeek}}" icon="records" is-link>
+<van-cell value="{{thisWeek}}" icon="records" is-link bind:click='thisWeek'> 
   <view slot="title">
     <view class="van-cell-text">本周</view>
   </view>
 </van-cell>
 
-<van-cell value="{{nextWeek}}" icon="tosend" is-link>
+<van-cell value="{{nextWeek}}" icon="tosend" is-link bind:click='nextWeek'>
   <view slot="title">
     <view class="van-cell-text">下周</view>
   </view>
 </van-cell>
 
-<van-cell value="{{all}}" icon="notes-o" is-link>
+<van-cell value="{{all}}" icon="notes-o" is-link bind:click='all'>
   <view slot="title">
     <view class="van-cell-text">所有</view>
   </view>
 </van-cell>
+
+ <view class=" bottom2"> </view>
+ <van-cell value="{{item.num}}" icon="shop-o" is-link wx:for="{{list}}" wx:for-item="item" wx:key='index'>
+  <view slot="title">
+    <view class="van-cell-text">{{item.title}}</view>
+  </view>
+</van-cell>
+<van-cell title="添加" icon="add" icon-color='blue' border='{{false}}' bind:click='Addlist' clickable/> 
+
+

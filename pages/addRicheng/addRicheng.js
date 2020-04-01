@@ -7,7 +7,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    richenglist:[{'title':'biaoti'},{'title':'biaoti2'}],
+    richenglist:[
+      {'title':'biaoti'},
+      {'title':'biaoti2'}
+    ],
     remindshowList:[
       {'title':'不提醒'},
       {'title':'准时提醒'},
@@ -26,8 +29,8 @@ Page({
     ],
     title:'',
     jop:'工作列表',
-    time1:'',
-    time2:'',
+    time1:{'date':'','week':''},
+    time2:{'date':'','week':''},
     site:'',
     comment:'',
     remind:'',
@@ -77,17 +80,22 @@ Page({
     this.setData({showTime:true,timeIndex:event.currentTarget.dataset.index});
   },
   showTime1(value){
-    
+    console.log('时间戳==>',this.data.currentDate);
+    var _time = times.js_date_time(this.data.currentDate);
+    var _weeks= times.js_date_yyyy(this.data.currentDate);
+    var weekArray = new Array("星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六");
+    var date = _weeks ;  //※※※注意，日期格式一定要为xxxx/xx/xx,别的格式Android 和iOS有兼容问题。
+    var week = weekArray[new Date(date).getDay()];  //注意此处必须是先new一个Date
+
     if(this.data.timeIndex == 1){
-      console.log('time1==>',this.data.currentDate);
-      console.log(times.js_date_time(this.data.currentDate,));
+      console.log(week)
       this.setData({
-        time1 :(this.data.currentDate)
+        time1:{'date':_time,'week':week},
       });
     }else{
       console.log('time2==>',this.data.currentDate);
       this.setData({
-        time2:(this.data.currentDate)
+        time2:{'date':_time,'week':week},
       });
     }
     this.setData({showTime:false,});
@@ -102,22 +110,38 @@ Page({
   onTrue(){
     console.log('==>1');
   },
-
   onClose() { this.setData({ remindshow: false });},
   onCloserepeat() {this.setData({ repeatshow: false });},
   onCloseshowTime(){ this.setData({ showTime: false });},
+  dpTime(){
+    var timestamp = Date.parse(new Date()); 
+    console.log('时间戳==>',timestamp);
+    var _time = times.js_date_time(this.data.currentDate);
+    var _weeks= times.js_date_yyyy(this.data.currentDate);
+    var _weekArray = new Array("星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六");
+    var _date = _weeks ;  //※※※注意，日期格式一定要为xxxx/xx/xx,别的格式Android 和iOS有兼容问题。
+    var _week = _weekArray[new Date(_date).getDay()];  //注意此处必须是先new一个Date
+
+    this.setData({
+      time1:{'date':_time,'week':_week},
+      time2:{'date':_time,'week':_week},
+    });
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     let data = options.data;
+    
     if(data == 1 || data == undefined ){
       console.log('data==',options.data);
       wx.setNavigationBarTitle({title: '添加日程' })
-      this.addRichen()
+      this.addRichen();
+      this.dpTime();
     }else if(data == 2){
       console.log('id==',options.id);
       wx.setNavigationBarTitle({title: '日程编辑' })    
+      this.setData({ type:data });
     }
    
   },
@@ -126,7 +150,6 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
   },
 
   /**

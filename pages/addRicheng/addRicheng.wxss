@@ -9,7 +9,7 @@
   display:flex;
   align-items:center;/*垂直居中*/
   justify-content: center;/*水平居中*/
-  border-bottom: solid 1px #ccc;
+  border-bottom: solid 0.5rpx rgb(240, 237, 237);
 }
 .juzhog{
   height: 40px;

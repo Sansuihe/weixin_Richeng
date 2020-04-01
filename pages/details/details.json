@@ -1,0 +1,17 @@
+{
+  "usingComponents": {
+    "van-swipe-cell": "/@vant/weapp/swipe-cell/",
+    "van-field": "/@vant/weapp/field/",
+    "van-cell": "/@vant/weapp/cell/",
+    "van-cell-group": "/@vant/weapp/cell-group/",
+    "van-dialog": "/@vant/weapp/dialog/",
+    "van-button": "/@vant/weapp/button/",
+    "van-action-sheet": "/@vant/weapp/action-sheet/",
+    "van-icon": "/@vant/weapp/icon/",
+    "van-row": "/@vant/weapp/row/",
+    "van-col": "/@vant/weapp/col/",
+    "van-switch": "/@vant/weapp/switch/",
+    "van-datetime-picker": "/@vant/weapp/datetime-picker/"
+  },
+  "navigationBarTitleText": "今日" 
+}

@@ -1,1 +1,4 @@
 /* pages/list/list.wxss */
+.bottom2{
+  border-bottom: solid 4px #e8e9ee; 
+}

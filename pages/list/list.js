@@ -23,6 +23,7 @@ Page({
           today:res.today,
           thisWeek:res.thisWeek,
           nextWeek:res.nextWeek,
+          list:res.list
         })
       }else{
         wx.showLoading({title: res.msg,})
@@ -33,6 +34,11 @@ Page({
         setTimeout(function(){wx.hideLoading()},1000)
     });
   },
+  all(){ wx.navigateTo({url: '../details/details?data=3'}) },
+  today(){wx.navigateTo({url: '../details/details?data=0'})},
+  thisWeek(){wx.navigateTo({url: '../details/details?data=1'})},
+  nextWeek(){wx.navigateTo({url: '../details/details?data=2'})},
+  Addlist(){wx.navigateTo({url: '../addList/addList'})},
   /**
    * 生命周期函数--监听页面加载
    */
@@ -51,7 +57,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.List();
   },
 
   /**
@@ -72,7 +78,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.List()
   },
 
   /**

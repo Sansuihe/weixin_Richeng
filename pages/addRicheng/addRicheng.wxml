@@ -28,8 +28,8 @@
 </van-row>
 
 <van-cell-group>
-  <van-cell title="{{time1}}" value="内容"  clickable bind:click = 'times'  data-index="1" />
-  <van-cell title="{{time2}}" value="内容" clickable bind:click = 'times'  data-index="2" border="{{ true }}"/>
+  <van-cell title="{{time1.date}}" value="{{time1.week}}"  clickable bind:click = 'times'  data-index="1" />
+  <van-cell title="{{time2.date}}" value="{{time2.week}}" clickable bind:click = 'times'  data-index="2" border="{{ true }}"/>
 </van-cell-group>
 <van-cell-group>
   <van-field

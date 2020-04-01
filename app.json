@@ -1,10 +1,14 @@
 {
   "pages": [
-    "pages/addRicheng/addRicheng",
-    "pages/home/home",
-    "pages/list/list",
-    "pages/my/my",
+    "pages/list/list",    
+    "pages/home/home", 
+    "pages/details/details", 
     "pages/login/login",
+    "pages/addList/addList",
+    "pages/addRicheng/addRicheng",
+    
+   
+    "pages/my/my",
     "pages/forgetCode/forgetCode",
     "pages/register/register",
     "pages/index/index",

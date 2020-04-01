@@ -1,0 +1,29 @@
+<!--pages/addList/addList.wxml-->
+<van-cell-group>
+  <van-field
+    value="{{ inner }}"
+    placeholder="请输入列表内容"
+    border="{{ false }}"
+    bind:change="onChangeinner"
+  />
+</van-cell-group>
+<van-cell is-link bind:click='xuanzhe'>
+  <view slot="title">
+    <view class="van-cell-text">{{jop}}</view>
+  </view>
+</van-cell>
+<van-dialog
+  use-slot
+  title="选择日程列表"
+  show="{{ show }}"
+  show-cancel-button
+  bind:close="onClose"
+  show-confirm-button ='{{false}}'
+  show-cancel-button = '{{false}}'
+  closeOnClickOverlay = '{{true}}'
+>
+<!-- confirm-button-open-type="getUserInfo"
+  bind:getuserinfo="getUserInfo" -->
+  <van-cell bind:click='xuanzeliebiao' data-item="{{item}}" wx:for="{{richenglist}}" wx:for-item="item" wx:key="index" title="{{item.title}}" icon="newspaper-o" border='{{true}}' is-link/>
+</van-dialog>
+<button style='position:fixed;width:80%;bottom:30px;left:10%' bindtap="queding">确定</button>
