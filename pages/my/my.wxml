@@ -46,7 +46,7 @@
       </view>
     </view> -->
 
-    <view class="item">
+    <view class="item" bindtap="admins">
       <view class='wallet'>
         <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;</text>
         <image src='../../images/fuzhu.png' class='iimg'></image>

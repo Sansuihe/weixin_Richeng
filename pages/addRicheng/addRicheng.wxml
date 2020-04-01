@@ -53,16 +53,13 @@
   use-slot
   title="选择日程列表"
   show="{{ show }}"
-  show-cancel-button
+ show-cancel-button
   bind:close="onClose"
   bind:confirm = 'onTrue'
   show-confirm-button ='{{false}}'
   show-cancel-button = '{{false}}'
   closeOnClickOverlay = '{{true}}'
 >
-<!-- confirm-button-open-type="getUserInfo"
-  bind:getuserinfo="getUserInfo" -->
-  <van-cell bind:click='xuanzeliebiao' data-item="{{item}}" wx:for="{{richenglist}}" wx:for-item="item" wx:key="index" title="{{item.title}}" icon="newspaper-o" border='{{true}}' is-link/>
 </van-dialog>
 
 <van-action-sheet show="{{ remindshow }}" title="提醒" bind:close="onClose">

@@ -1,57 +1,28 @@
-// pages/my/my.js
-import {Api} from '../../utils/api';
-import utlis from '../../utils/util';
-import Toast  from '@vant/weapp/toast/toast';
-
-const app = getApp()
+// pages/Administrators/Administrators.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    name:'',
-  },
-
-  forgetCode(){
-    wx.navigateTo({
-      url: '../forgetCode/forgetCode'
-   })
-  },
-  admins(){
-    wx.navigateTo({
-      url: '../Administrators/Administrators'
-   })
-  },
-  geRen(){
-    utlis.get(Api.auth,).then((res)=>{
-      if(res.code == 0){
-        console.log('res1==',res)
-        this.setData({
-          name:res.data.name
-        })
-      }else{
-        wx.showLoading({title: res.msg,})
-        setTimeout(function(){wx.hideLoading()},1000)
-      }
-    }).catch((res)=>{
-      console.log('res3==',res)
-      Toast.fail(res.msg);
-    });
+    total:0,
+    list:[{name:'用户名',phone:'13763914875',created:'2020-08-20'}],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.geRen();
+
   },
+
+  addClass(){ wx.navigateTo({url: '../listsetting/listsetting'})},
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    
+
   },
 
   /**

@@ -1,11 +1,27 @@
 /* pages/details/details.wxss */
-.van-swipe-cell__left,.van-swipe-cell__right,.van-swipe-cell__right2  {
-  display: inline-block;
-  width: 65px;
+.van-swipe-cell__right{
+  display: flex;
+  width: 120px;
   height: 44px;
   font-size: 15px;
   line-height: 44px;
   color: #fff;
   text-align: center;
-  background-color: #f44;
+}
+.DIV{
+  display: flex;
+  width: 340px;
+  margin:5px auto 0px;
+  /* padding:5px; */
+  height: 45px;
+}
+.left{
+  width: 230px;
+  height: 40px;
+  float: left;
+}
+.right{
+  width: 100px;
+  height: 45px;
+  text-align: right;
 }

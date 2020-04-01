@@ -1,9 +1,20 @@
 <!--pages/details/details.wxml-->
-<van-swipe-cell id="swipe-cell2" right-width="{{ 150 }}" left-width="{{ 65 }}" name="示例" bind:open="onOpen" >
-    <view slot="left" class="van-swipe-cell__left">选择</view>
-    <van-cell-group>
+<van-swipe-cell id="swipe-cell2" right-width="{{ 120 }}" left-width="{{ 0 }}" name="示例" bind:open="onOpen" >
+    <!-- <van-cell-group>
       <van-cell title="单元格" value="内容" />
-    </van-cell-group>
-    <view slot="right" class="van-swipe-cell__right">删除</view>
-    <view slot="right" class="van-swipe-cell__right2">删除</view>
+    </van-cell-group> -->
+    <view class="DIV">
+       <view class="left">
+            <view  style="font-size:15px;font-weight:bold;height:25px">title</view>
+            <view  style="font-size:12px">222222222222222222</view>
+       </view>
+        <view  class="right">
+            <view style=";height:25px"><van-icon name="fire-o"  size="12px"/></view>
+            <view style="font-size:12px"><van-icon name="fire-o" size="10px" />22222</view>
+       </view>
+    </view>
+    <view slot="right" class="van-swipe-cell__right">
+    <van-button type="primary">编辑</van-button>
+    <van-button type="warning">删除</van-button>
+    </view>
   </van-swipe-cell>

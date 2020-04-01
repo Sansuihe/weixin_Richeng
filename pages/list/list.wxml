@@ -30,11 +30,12 @@
 </van-cell>
 
  <view class=" bottom2"> </view>
+ 
  <van-cell value="{{item.num}}" icon="shop-o" is-link wx:for="{{list}}" wx:for-item="item" wx:key='index'>
   <view slot="title">
     <view class="van-cell-text">{{item.title}}</view>
   </view>
 </van-cell>
-<van-cell title="添加" icon="add" icon-color='blue' border='{{false}}' bind:click='Addlist' clickable/> 
+<van-cell title="添加" icon="add" border='{{false}}' bind:click='Addlist' clickable/> 
 
 

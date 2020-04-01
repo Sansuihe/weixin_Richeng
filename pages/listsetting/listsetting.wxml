@@ -1,0 +1,40 @@
+<!--pages/listsetting/listsetting.wxml-->
+<view class="list"  wx:for="{{list}}" wx:for-item="item" wx:key='index'>
+   <van-icon name="{{item.icon}}" size="20px" />
+   <view class="name">{{item.title}}</view>
+   <view bindtap="coms"  data-item="{{item}}"  class="coment">编辑</view>
+   <view bindtap="dels"  data-item="{{item}}"  class="del">删除</view>
+</view>
+<van-cell title="添加分类" icon="add" border='{{false}}' bind:click='Addlist' clickable/> 
+
+<van-dialog
+  use-slot
+  title="编辑日程分类"
+  show="{{ show }}"
+  show-cancel-button
+  bind:close="onClose"
+  bind:confirm = 'onTrue'
+  bind:cancel= 'onCancel'
+>
+<van-cell-group>
+  <van-field
+    value="{{ icon }}"
+    required
+    clearable
+    label="图标"
+    icon="question-o"
+    placeholder="图标实例：setting-o"
+    bind:click-icon="onClickIcon"
+    bind:change="changeicon"
+  />
+
+  <van-field
+    value="{{ title }}"
+    label="分类名"
+    placeholder="请输入分类名"
+    required
+    border="{{ false }}"
+    bind:change="changetitle"
+  />
+</van-cell-group>
+</van-dialog>
