@@ -9,17 +9,24 @@
  />
 <view class=" bottom"> </view>
  <view class="richen">
-    <view>
+    <view style="width:100%; display:flex;justify-content:space-between">
         <text class="jiachu">今天日程</text>
+        <text>今天日程</text>
     </view>
     <view class=" bottom2"> </view>
-    <view wx:if="{{richengList.length == 0}}" class="noimg">
+
+    <view class="richengs">
+      <view class="lefts">
+          <view style="height：15px;font-size:12px;font-weight:bold">测试实施</view>
+          <view style="height：15px;font-size:12px;color:blue;font-weight:bold">2020-20-55</view>
+          <view style="height：15px;font-size:12px;color:grey;font-weight:bold">测试实施3</view>
+      </view>
+      <view>删除</view>
+    </view>
+    <view wx:if="{{richengList.length != 0}}" class="noimg">
         <image wx:if="{{richengList.length == 0}}"  mode = 'center' class="noimg" src="../../images/no.jpg" ></image>
     </view>
-
  </view>
-
-
 
  <view class="round-click">
    <navigator url='/pages/addRicheng/addRicheng?data=1' >添加</navigator >

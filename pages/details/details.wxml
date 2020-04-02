@@ -5,11 +5,11 @@
     </van-cell-group> -->
     <view class="DIV">
        <view class="left">
-            <view  style="font-size:15px;font-weight:bold;height:25px">title</view>
+            <view  style="font-size:15px;font-weight:bold;height:20px">title</view>
             <view  style="font-size:12px">222222222222222222</view>
        </view>
         <view  class="right">
-            <view style=";height:25px"><van-icon name="fire-o"  size="12px"/></view>
+            <view style="height:20px"><van-icon name="fire-o"  size="12px"/></view>
             <view style="font-size:12px"><van-icon name="fire-o" size="10px" />22222</view>
        </view>
     </view>

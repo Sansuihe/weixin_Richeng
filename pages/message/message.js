@@ -1,14 +1,27 @@
 // pages/message/message.js
 import {Api} from '../../utils/api';
 import utlis from '../../utils/util';
+import Notify from '@vant/weapp/notify/notify';
+import Toast  from '@vant/weapp/toast/toast';
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    isWeixin:true,
+    isDisabled:false,
+    userName:'',
+    userphone:'',
+    Olduserphone:'',
+    userCode:'',
+    code:'',
+    showcode:'发送验证码',
+    snsMsgWait: 10
   },
+  changeuserName (event) {this.setData({ userName: event.detail})},
+  changeuserphone (event) {this.setData({ userphone: event.detail})},
+  changeuserCode (event) {this.setData({ userCode: event.detail})},
   bindWx(){
     wx.login({
       success: (res)=>{    
@@ -31,6 +44,55 @@ Page({
       }
     }) 
   },
+
+  faCode(){
+    var that = this;
+    if (that.data.userphone== '') {
+      Notify({ type: 'danger', message: '号码不能为空'});
+    } else if (that.data.userphone.trim().length != 11 || !/^1[3|4|5|6|7|8|9]\d{9}$/.test(that.data.userphone)) {
+      Notify({ type: 'danger', message: '手机号格式不正确'});
+    } else  if(that.data.isDisabled == false){
+      this.setData({ isDisabled: true, });
+      var int =Math.floor(Math.random()*100000 +10000);
+      Notify({ type: 'success', message: '微日程管理验证码：'+int });
+      var inter = setInterval(function() {
+        this.setData({
+          isDisabled: true,
+          code:int,
+          showcode: this.data.snsMsgWait + 's后重发',
+          snsMsgWait: this.data.snsMsgWait - 1
+        });
+        if (this.data.snsMsgWait < 0) {
+          clearInterval(inter)
+          this.setData({
+            showcode: '发送验证码',
+            snsMsgWait: 10,
+            isDisabled: false
+          });
+        }
+      }.bind(this), 1000);
+    }
+    console.log(int);
+    // 60秒后重新获取验证码
+  },
+
+  btons(){
+    var that = this
+     if (that.data.userphone.trim().length != 11 || !/^1[3|4|5|6|7|8|9]\d{9}$/.test(that.data.userphone)) {
+      Toast.fail('手机号格式不正确');return
+    }else if (that.data.username =='' || that.data.username.trim()=='' ) {
+      Toast.fail('请输入用户名');return
+    }if (that.data.userphone != that.data.Olduserphone && that.data.userCode == '') {
+      Toast.fail('请输入验证码');return
+    } else if(that.data.userphone != that.data.Olduserphone && that.data.userCode != that.data.code) {Toast.fail('验证码错误');return
+    }else{
+      that.xiugai();
+    }
+  },
+  xiugai(){
+
+  },
+  
   /**
    * 生命周期函数--监听页面加载
    */

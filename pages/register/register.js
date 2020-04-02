@@ -79,10 +79,13 @@ Page({
   faCode(){
     var that = this;
     if (that.data.userphone== '') {
+      console.log(1);
       Notify({ type: 'danger', message: '号码不能为空'});
     } else if (that.data.userphone.trim().length != 11 || !/^1[3|4|5|6|7|8|9]\d{9}$/.test(that.data.userphone)) {
+      console.log(2);
       Notify({ type: 'danger', message: '手机号格式不正确'});
     } else  if(that.data.isDisabled == false){
+      console.log(3);
       this.setData({ isDisabled: true, });
       var int =Math.floor(Math.random()*100000 +10000);
       Notify({ type: 'success', message: '微日程管理验证码：'+int });
@@ -103,11 +106,8 @@ Page({
         }
       }.bind(this), 1000);
     }
-   
-
     console.log(int);
     // 60秒后重新获取验证码
-   
   },
   
 

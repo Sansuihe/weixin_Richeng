@@ -47,7 +47,9 @@
 
 <van-cell bind:click='repeat' title="重复 {{repeat}}" icon="replay" border  = '{{true}}' is-link/>
 
-<view class="buttons" bindtap="onTabs"><van-button round type="info">√</van-button></view>
+<view class="buttons" bindtap="onTabs">
+    <view class="yuan">√</view>
+</view>
 
 <van-dialog
   use-slot
@@ -78,12 +80,13 @@
 </van-action-sheet>
 
 
-<van-action-sheet show="{{ showTime }}" bind:close="onCloseshowTime">
+<van-action-sheet show="{{ showTime }}" close-on-click-overlay = '{{false}}' bind:close="onCloseshowTime">
   <van-datetime-picker
   type="datetime"
   value="{{ currentDate }}"
   min-date="{{ minDate }}"
   max-date="{{ maxDate }}"
+  
   bind:input="onInput"
   bind:confirm='showTime1'
   bind:cancel='onCloseshowTime'

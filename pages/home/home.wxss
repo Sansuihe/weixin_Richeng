@@ -39,4 +39,14 @@
     height: 350px;
     overflow: hidden;
   }
-  
+  .richengs{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    margin-top: 10px;
+    border-bottom: solid 1rpx rgb(231, 230, 230);
+  }
+  .lefts{
+    width: 70%;
+     height: 150px;
+  }

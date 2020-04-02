@@ -30,7 +30,7 @@
      <!--按钮-->  
      <view class="bttons">
         <view class="loginBtnView">  
-          <button style="background-color: #DDB6CB;blue;color:white" class="loginBtn" size="{{primarySize}}" bindtap="register"  >注册</button>  
+          <button style="background-color: #E6BBBE;blue;color:white" class="loginBtn" size="{{primarySize}}" bindtap="register"  >注册</button>  
         </view>  
         <view class="loginBtnView">  
           <button style="background-color: #6A74D3;color:white" class="loginBtn" size="{{primarySize}}"  bindtap="login" disabled='{{disabled}}'>登录</button>  
