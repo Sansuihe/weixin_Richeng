@@ -48,6 +48,31 @@ Page({
       setTimeout(function(){wx.hideLoading()},1000)
     });
   },
+
+  wxLogin(){
+    wx.login({
+      success: (res)=>{    
+        console.log(res);
+        utlis.post(Api.wxLogin,
+          {   code: res.code},
+          ).then((res)=>{
+          if(res.code == 0){
+            wx.showLoading({title: '登录中...',})
+            setTimeout(function () {
+              wx.switchTab({ url:"/pages/my/my"})
+            }, 1000) //延迟时间 这里是1秒
+          }else{
+            wx.showLoading({title: res.msg,})
+            setTimeout(function(){wx.hideLoading()},1000)
+          }
+        }).catch((res)=>{
+            wx.showLoading({title: res.msg,})
+            setTimeout(function(){wx.hideLoading()},1000)
+        });
+      }
+    }) 
+  },
+
   register(){
     wx.navigateTo({
       url: '../register/register'

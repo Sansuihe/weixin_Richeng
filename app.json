@@ -1,14 +1,18 @@
 {
   "pages": [
+    "pages/login/login",
+    "pages/addRicheng/addRicheng",
+    "pages/my/my", 
+    "pages/message/message", 
+
+    "pages/toimgs/toimgs",
+    "pages/Administrators/Administrators", 
+    
     "pages/list/list", 
     "pages/details/details",
     "pages/listsetting/listsetting",
-    "pages/my/my",
-    "pages/Administrators/Administrators", 
     "pages/home/home", 
-    "pages/login/login",
     "pages/addList/addList",
-    "pages/addRicheng/addRicheng",
     "pages/forgetCode/forgetCode",
     "pages/register/register",
     "pages/index/index",

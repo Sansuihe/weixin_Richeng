@@ -13,7 +13,7 @@ function js_date_time(unixtime) {
   minute = minute < 10 ? ('0' + minute) : minute;
   second = second < 10 ? ('0' + second) : second;
   // return y + '-' + m + '-' + d + ' ' + h + ':' + minute + ':' + second;//年月日时分秒
-  return y + '/' + m + '/' + d + ' ' + h + ':' + minute;
+  return y + '/' + m + '/' + d + ' ' + h + ':' + minute+ ':' + second;
 
 }
 

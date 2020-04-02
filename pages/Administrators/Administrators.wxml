@@ -4,12 +4,12 @@
     <view class="van-cell-text">日程分类管理</view>
   </view>
 </van-cell>
-<van-cell value="{{total}}" icon="friends" clickable  border>
+<van-cell value="{{total}}人在使用" icon="friends" clickable  border>
   <view slot="title">
     <view class="van-cell-text">全部用户</view>
   </view>
 </van-cell>
 
 <van-cell-group  wx:for="{{list}}" wx:for-item="item" wx:key='index'>
-  <van-cell title="{{item.name}}" value="{{item.created}}" label="手机号：{{item.phone}}" border="{{ true }}" />
+  <van-cell icon="manager" title="{{item.name}}" value="{{item.loginTime}}" label="手机号：{{item.mobile}}" border="{{ true }}" />
 </van-cell-group>

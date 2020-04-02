@@ -1,23 +1,25 @@
 // pages/addRicheng/addRicheng.js
 import Dialog from '/@vant/weapp/dialog/dialog';
 import times from '../../utils/times';
+import {Api} from '../../utils/api';
+import utlis from '../../utils/util';
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    id:'',
     richenglist:[
-      {'title':'biaoti'},
-      {'title':'biaoti2'}
+      {id: 1, title: "会议", createTime: "2020-03-29 00:35:24", icon: "icontest"}
     ],
     remindshowList:[
-      {'title':'不提醒'},
-      {'title':'准时提醒'},
-      {'title':'提前五分钟'},
-      {'title':'提前30分钟'},
-      {'title':'提前1小时'},
-      {'title':'提前1天'},
+      {'title':'不提醒',time:-1},
+      {'title':'准时提醒',time:0},
+      {'title':'提前五分钟',time:5},
+      {'title':'提前30分钟',time:30},
+      {'title':'提前1小时',time:60},
+      {'title':'提前1天',time:1440},
     ],
     repeatshowList:[
       {'title':'无'},
@@ -28,12 +30,12 @@ Page({
       {'title':'每年'},
     ],
     title:'',
-    jop:'工作列表',
+    scheduleId:{id: 2, title: "其他", createTime: "2020-03-29 00:45:14", icon: "icontest"},
     time1:{'date':'','week':''},
     time2:{'date':'','week':''},
     site:'',
     comment:'',
-    remind:'',
+    remind:'',//{title: "提前五分钟", time: 5},
     repeat:'',
 
     timeIndex:0,
@@ -59,11 +61,18 @@ Page({
 
   xuanzeliebiao(e){
     console.log( e.currentTarget.dataset.item);
-    this.setData({show:false,jop:e.currentTarget.dataset.item.title});
+    this.setData({
+      show:false,
+      scheduleId:e.currentTarget.dataset.item,
+    });
   },
   xuanzetixin(e){
     console.log( e.currentTarget.dataset.item);
-    this.setData({remindshow:false,remind:e.currentTarget.dataset.item.title});
+    this.setData({
+        remindshow:false,
+        remind:e.currentTarget.dataset.item
+      }
+    );
   },
   xuanzechongfu(e){
     console.log( e.currentTarget.dataset.item);
@@ -127,12 +136,80 @@ Page({
       time2:{'date':_time,'week':_week},
     });
   },
+  wxLogin(){
+    wx.login({
+      success: (res)=>{    
+        console.log(res);
+        utlis.post(Api.wxLogin,
+          {   code: res.code},
+          ).then((res)=>{
+          if(res.code == 0){
+            wx.showLoading({title: res.msg,})
+            setTimeout(function () {
+              setTimeout(function(){wx.hideLoading()},1000) }, 1000) //延迟时间 这里是1秒
+          }else{
+            wx.showLoading({title: res.msg,})
+            setTimeout(function(){wx.hideLoading()},1000)
+          }
+        }).catch((res)=>{
+            wx.showLoading({title: res.msg,})
+            setTimeout(function(){wx.hideLoading()},1000)
+        });
+      }
+    }) 
+  },
+  onTabs(){ //提交
+    console.log('1');
+    // this.wxLogin();
+    utlis.post(Api.saveItem,
+      { 
+        "id": this.data.id,
+        "title": this.data.title,
+        "address":this.data.site,
+        'remark':this.data.comment,
+        'scheduleId':this.data.scheduleId.id,
+        "scheduleEndTime": this.data.time1.date,
+        "scheduleStartTime": this.data.time2.date,
+        'isRepetition':this.data.repeat,
+        'ahead':this.data.remind.time,
+        'any':this.data.checked==true?1:0
+      },
+      true
+      ).then((res)=>{
+      if(res.code == 0){
+        wx.showLoading({title: res.msg,})
+        setTimeout(function () {
+          setTimeout(function(){wx.hideLoading()},1000)
+         }, 1000) //延迟时间 这里是1秒
+      }else{
+        wx.showLoading({title: res.msg,})
+        setTimeout(function(){wx.hideLoading()},1000)
+      }
+    }).catch((res)=>{
+        wx.showLoading({title: res.msg,})
+        setTimeout(function(){wx.hideLoading()},1000)
+    });
+  },
+  scheduleType(){ //scheduleType类型
+    console.log('1');
+    utlis.get(Api.scheduleType,).then((res)=>{
+      if(res.code == 0){
+        this.setData({richenglist:res.data })
+      }else{
+        wx.showLoading({title: res.msg,})
+        setTimeout(function(){wx.hideLoading()},1000)
+      }
+    }).catch((res)=>{
+      wx.showLoading({title: res.msg,})
+        setTimeout(function(){wx.hideLoading()},1000)
+    });
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     let data = options.data;
-    
+    this.scheduleType();
     if(data == 1 || data == undefined ){
       console.log('data==',options.data);
       wx.setNavigationBarTitle({title: '添加日程' })

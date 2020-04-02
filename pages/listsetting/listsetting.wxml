@@ -1,9 +1,10 @@
 <!--pages/listsetting/listsetting.wxml-->
-<view class="list"  wx:for="{{list}}" wx:for-item="item" wx:key='index'>
+<van-cell title="查看预设图标列表" bind:click='toimg' is-link />
+<view class="list"  wx:for="{{richenglist}}" wx:for-item="item" wx:key='index'>
    <van-icon name="{{item.icon}}" size="20px" />
    <view class="name">{{item.title}}</view>
    <view bindtap="coms"  data-item="{{item}}"  class="coment">编辑</view>
-   <view bindtap="dels"  data-item="{{item}}"  class="del">删除</view>
+   <view bindtap="delScheduleType"  data-item="{{item}}"  class="del">删除</view>
 </view>
 <van-cell title="添加分类" icon="add" border='{{false}}' bind:click='Addlist' clickable/> 
 
@@ -13,7 +14,7 @@
   show="{{ show }}"
   show-cancel-button
   bind:close="onClose"
-  bind:confirm = 'onTrue'
+  bind:confirm = 'SavescheduleType'
   bind:cancel= 'onCancel'
 >
 <van-cell-group>

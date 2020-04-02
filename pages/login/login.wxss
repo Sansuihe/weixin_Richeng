@@ -21,7 +21,7 @@ page{
 .login-icon{
   flex: none;
   margin: 0 auto;
-  margin-top: 200rpx;
+  margin-top: 150rpx;
 }
 .login-img{
   width: 220rpx;
@@ -32,7 +32,7 @@ page{
  
 /*表单内容*/
 .login-from {
-  margin-top: 50px;
+  margin-top: 40px;
   flex: auto;
   height:100%;
 }
@@ -82,7 +82,7 @@ page{
   width: 90%;
   height: 80rpx;
   line-height: 80rpx;
-  margin-top: 35px;
+  margin-top: 15px;
   color: #fff;
   background-color:#7e8ef0;
   border: 0.1rpx solid #ccc;

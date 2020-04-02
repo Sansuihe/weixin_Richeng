@@ -37,6 +37,10 @@
         </view>  
     </view>
     <!-- </form> -->
-  
+     <view style="display: flex;flex-direction: row; justify-content: center; flex-wrap: wrap;">
+           <image src="/images/wx.png" style="width:55px; height:70px; flex: none; margin-top: 10px" bindtap="wxLogin"></image>
+     </view>
   </view>  
+
+
 </view>  

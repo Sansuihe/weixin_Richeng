@@ -30,12 +30,38 @@
 </van-cell>
 
  <view class=" bottom2"> </view>
- 
- <van-cell value="{{item.num}}" icon="shop-o" is-link wx:for="{{list}}" wx:for-item="item" wx:key='index'>
-  <view slot="title">
-    <view class="van-cell-text">{{item.title}}</view>
+
+ <view class="list"  wx:for="{{list}}" wx:for-item="item" wx:key='index'>
+   <van-icon name="{{item.typeIcon}}" color="#3A8BFF" size="15px" />
+   <view class="name">{{item.title}}</view>
+  
+  <view class="rows">
+       <view bindtap="coms" wx:if='{{showButton == false}}'  data-item="{{item}}"  class="coment">编辑</view>
+        <view bindtap="delScheduleType"  wx:if='{{showButton == false}}' data-item="{{item}}"  class="del">删除</view>
+        <text style="padding-right:8px">{{item.num}}</text>
+        <van-icon  name="arrow" />
   </view>
-</van-cell>
+</view>
+
+ <!-- <view class="hang" wx:for="{{list}}" wx:for-item="item" wx:key='index'>
+     <view class="danyuan" >
+        <van-cell value="{{item.num}}" icon="{{item.typeIcon}}" is-link >
+          <view slot="title">
+            <view class="van-cell-text">{{item.title}}</view>
+          </view>
+        </van-cell>
+     </view>
+  </view> -->
+    <!-- <view style='display:flex;float:right;width:80px'>
+        <view wx:if='{{guanli}}'>编辑</view>
+         <view wx:if='{{guanli}}'> 删除</view>
+    </view> -->
+
 <van-cell title="添加" icon="add" border='{{false}}' bind:click='Addlist' clickable/> 
 
-
+ <view bindtap="guanli" wx:if='{{list.length>0 && showButton == true}}' class="round-click">
+   <text>管理</text>
+</view>
+ <view bindtap="guanli" wx:if='{{list.length>0 && showButton == false}}' class="round-click">
+   <text>完成</text>
+</view>

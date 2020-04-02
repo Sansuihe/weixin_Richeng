@@ -1,0 +1,8 @@
+<!--pages/message/message.wxml-->
+
+<view class="uesr">
+    <open-data type="userAvatarUrl"></open-data>
+</view>
+<view bindtap="bindWx">
+    绑定微信
+</view> 

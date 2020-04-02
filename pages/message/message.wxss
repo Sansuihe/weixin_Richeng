@@ -1,0 +1,8 @@
+/* pages/message/message.wxss */
+.uesr{
+  width: 80px;
+  height: 80px;
+  display: flex;
+  flex-direction: row;
+  margin:  10px auto;
+}

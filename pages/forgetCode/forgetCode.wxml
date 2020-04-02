@@ -47,7 +47,7 @@
     />
   </van-cell-group>
   <van-row class='but'>
-    <van-col  span="8" offset="9"><van-button bindtap="register" color="linear-gradient(to right, #4bb0ff, #6149f6)">立即申请修改</van-button></van-col>
+    <van-col  span="8" offset="9"><van-button bindtap="register" color="linear-gradient(to right, #4bb0ff, #6149f6)">立即修改</van-button></van-col>
   </van-row>
   <van-notify id = "van-notify" />
   <van-toast id="van-toast" />

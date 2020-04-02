@@ -1,5 +1,7 @@
 // pages/listsetting/listsetting.js
 import Dialog from '/@vant/weapp/dialog/dialog';
+import {Api} from '../../utils/api';
+import utlis from '../../utils/util';
 Page({
 
   /**
@@ -11,6 +13,10 @@ Page({
     icon:'',
     title:'',
     bianji:{id:'',icon:'',title:''},
+    richenglist:[
+      {'title':'biaoti'},
+      {'title':'biaoti2'}
+    ],
     list:[
       {title:'页面的初始数据',id:0,icon:'add'}
     ]
@@ -28,13 +34,7 @@ Page({
       icon:data.icon,
     });
   },
-  dels(e){
-    console.log( e.currentTarget.dataset.item);
-    this.setData({show:false,jop:e.currentTarget.dataset.item.title});
-  },
-  onTrue(){
-
-  },
+ 
   onCancel(){
     this.setData({
       show:false,
@@ -51,11 +51,66 @@ Page({
       icon:'',
     })
   },
+  scheduleType(){ //scheduleType
+    console.log('1');
+    utlis.get(Api.scheduleType,).then((res)=>{
+      if(res.code == 0){
+        this.setData({richenglist:res.data })
+      }else{
+        wx.showLoading({title: res.msg,})
+        setTimeout(function(){wx.hideLoading()},1000)
+      }
+    }).catch((res)=>{
+      wx.showLoading({title: res.msg,})
+        setTimeout(function(){wx.hideLoading()},1000)
+    });
+  },
+
+  SavescheduleType(){ //scheduleType
+    console.log(this.data.bianji);
+    utlis.post(Api.scheduleType,
+      {
+        id:this.data.id,
+        title:this.data.title,
+        icon:this.data.icon.trim(),
+      },true
+    ).then((res)=>{
+      if(res.code == 0){
+        this.scheduleType();
+      }else{
+        wx.showLoading({title: res.msg,})
+        setTimeout(function(){wx.hideLoading()},1000)
+      }
+    }).catch((res)=>{
+      wx.showLoading({title: res.msg,})
+        setTimeout(function(){wx.hideLoading()},1000)
+    });
+  },
+
+  delScheduleType(e){ //scheduleType
+    var str = Api.delScheduleType + e.currentTarget.dataset.item.id
+    utlis.post(str,
+    ).then((res)=>{
+      if(res.code == 0){
+        this.scheduleType();
+      }else{
+        wx.showLoading({title: res.msg,})
+        setTimeout(function(){wx.hideLoading()},1000)
+      }
+    }).catch((res)=>{
+      wx.showLoading({title: res.msg,})
+        setTimeout(function(){wx.hideLoading()},1000)
+    });
+  },
+
+  toimg(){
+    wx.navigateTo({url: '../toimgs/toimgs'})
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.scheduleType()
   },
 
   /**

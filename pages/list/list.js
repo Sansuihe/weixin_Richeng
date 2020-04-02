@@ -11,7 +11,9 @@ Page({
     all:0,
     today:0,
     thisWeek:0,
-    nextWeek:0
+    nextWeek:0,
+    guanli:true,
+    showButton:true,
   },
   List(){
     utlis.get(Api.schedule,).then((res)=>{
@@ -39,6 +41,12 @@ Page({
   thisWeek(){wx.navigateTo({url: '../details/details?data=1'})},
   nextWeek(){wx.navigateTo({url: '../details/details?data=2'})},
   Addlist(){wx.navigateTo({url: '../addList/addList'})},
+
+  guanli(){
+    this.setData({
+      showButton:!this.data.showButton
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

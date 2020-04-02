@@ -24,6 +24,6 @@
 >
 <!-- confirm-button-open-type="getUserInfo"
   bind:getuserinfo="getUserInfo" -->
-  <van-cell bind:click='xuanzeliebiao' data-item="{{item}}" wx:for="{{richenglist}}" wx:for-item="item" wx:key="index" title="{{item.title}}" icon="newspaper-o" border='{{true}}' is-link/>
+  <van-cell bind:click='xuanzeliebiao' data-item="{{item}}" wx:for="{{richenglist}}" wx:for-item="item" wx:key="index" title="{{item.title}}" icon="{{item.icon}}" border='{{true}}' is-link/>
 </van-dialog>
 <button style='position:fixed;width:80%;bottom:30px;left:10%' bindtap="queding">确定</button>

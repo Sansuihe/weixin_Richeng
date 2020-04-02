@@ -8,7 +8,7 @@
   />
 </van-cell-group>
 
-<van-cell bind:click='showPop' title="{{jop}}" icon="newspaper-o" border  = '{{true}}' is-link/>
+<van-cell bind:click='showPop' title="{{scheduleId.title}}" icon="{{scheduleId.icon}}" border  = '{{true}}' is-link/>
 
 <van-cell-group>
   <van-field
@@ -37,29 +37,30 @@
      type="textarea"
       autosize
       left-icon="records"
-      bind:change="onChangecomment "
+      bind:change="onChangecomment"
       value="{{ comment   }}"
     border="{{ true }}"
   />
 </van-cell-group>
 
-<van-cell bind:click='remind' title="提醒 {{remind}}" icon="underway-o" border  = '{{true}}' is-link/>
+<van-cell bind:click='remind' title="提醒 {{remind.title}}" icon="underway-o" border  = '{{true}}' is-link/>
 
 <van-cell bind:click='repeat' title="重复 {{repeat}}" icon="replay" border  = '{{true}}' is-link/>
 
-<view class="buttons"><van-button round type="info">√</van-button></view>
+<view class="buttons" bindtap="onTabs"><van-button round type="info">√</van-button></view>
 
 <van-dialog
   use-slot
   title="选择日程列表"
   show="{{ show }}"
- show-cancel-button
+  show-cancel-button
   bind:close="onClose"
   bind:confirm = 'onTrue'
   show-confirm-button ='{{false}}'
   show-cancel-button = '{{false}}'
   closeOnClickOverlay = '{{true}}'
 >
+ <van-cell bind:click='xuanzeliebiao' data-item="{{item}}" wx:for="{{richenglist}}" wx:for-item="item" wx:key="index" title="{{item.title}}" icon="{{item.icon}}" border='{{true}}' is-link/>
 </van-dialog>
 
 <van-action-sheet show="{{ remindshow }}" title="提醒" bind:close="onClose">

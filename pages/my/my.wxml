@@ -13,7 +13,7 @@
         <text class='headname'>{{name}} </text>
     </view>
   <view class="nav">
-    <view class="item">
+    <view class="item" bindtap="ziliao">
       <view class='wallet'>
         <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;</text>
         <image src='../../images/fri.png' class='iimg'></image>
