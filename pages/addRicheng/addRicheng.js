@@ -56,7 +56,27 @@ Page({
   onChangecomment (event) {this.setData({ comment: event.detail})},
   onChange({ detail }) {this.setData({ checked: detail })},
   showPop(){this.setData({show:true})},
-  remind(){this.setData({remindshow:true})},
+  remind(){
+    wx.requestSubscribeMessage({
+      tmplIds: ['Ge0yRG1Rs9WT-vmDdpHNNYjCvX2tkb7gSjJwX4X_lts'],
+      success : (res)=> {         
+        console.log('进来成功授权',res['Ge0yRG1Rs9WT-vmDdpHNNYjCvX2tkb7gSjJwX4X_lts'] );   
+        if(res['Ge0yRG1Rs9WT-vmDdpHNNYjCvX2tkb7gSjJwX4X_lts'] == 'accept'){
+          console.log('进来成功授权');
+          this.setData({remindshow:true})
+        }else{
+          wx.showLoading({title: '设置提醒失败',})
+          setTimeout(function(){wx.hideLoading()},1000)
+        }
+       },
+       fail : (res)=> {
+        console.log('进来失败授权');
+        wx.showLoading({title: '请开启订阅提醒',})
+        setTimeout(function(){wx.hideLoading()},1000)    
+       }
+    })  
+  
+  },
   repeat(){this.setData({repeatshow:true})},
 
   xuanzeliebiao(e){

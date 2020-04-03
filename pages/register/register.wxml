@@ -63,7 +63,7 @@
     />
   </van-cell-group>
   <van-row class='but'>
-    <van-col  span="8" offset="10"><van-button bindtap="register" color="linear-gradient(to right, #4bb0ff, #6149f6)">立即注册</van-button></van-col>
+    <van-col  span="8" offset="8"><van-button bindtap="register"  size="large" type="info">立即注册</van-button></van-col>
   </van-row>
   <van-notify id = "van-notify" />
   <van-toast id="van-toast" />

@@ -2,6 +2,8 @@
   "pages": [
     "pages/login/login",
     "pages/addRicheng/addRicheng",
+   
+
     "pages/my/my", 
     "pages/message/message", 
 

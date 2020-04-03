@@ -3,6 +3,17 @@
   margin-top: 30px;
   text-align: center;
 }
+.yuan{
+  height: 100rpx;
+  width: 100rpx;
+  background-color: #505bf1;
+  border-radius: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
 .danyuange{
   height: 50px;
   line-height: 50px;

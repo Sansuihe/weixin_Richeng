@@ -11,7 +11,7 @@
       <view class="input_row weui-cell_input">
       <image class="nameImage" src="/images/yonghu.png"></image>
           <view class="weui-cell__bd">
-              <input class="weui-input" name="no" bindinput="noinput" value='{{no}}' placeholder="请输入用户名" placeholder-style="color:white;" />
+              <input class="weui-input" name="no" bindinput="noinput" value='{{no}}' placeholder="请输入用户名" />
           </view>
       </view>
     </view>
@@ -19,12 +19,12 @@
       <view class="input_row weui-cell_input">
       <image class="nameImage" src="/images/mima.png"></image>
           <view class="weui-cell__bd">
-              <input class="weui-input" type="password" name="pwd" bindinput="pwdinput" placeholder="请输入密码" placeholder-style="color:white;" value='{{pwd}}'/>
+              <input class="weui-input" type="password" name="pwd" bindinput="pwdinput" placeholder="请输入密码"  value='{{pwd}}'/>
           </view>
       </view>
     </view>
     <view class="wj_pasd">
-      <text bindtap="wanji" style="blue;color:white" >忘记密码</text>
+      <text bindtap="wanji" style="blue;color:gary" >忘记密码</text>
     </view> 
  
      <!--按钮-->  
@@ -38,7 +38,7 @@
     </view>
     <!-- </form> -->
      <view style="display: flex;flex-direction: row; justify-content: center; flex-wrap: wrap;">
-           <image src="/images/wx.png" style="width:55px; height:70px; flex: none; margin-top: 10px" bindtap="wxLogin"></image>
+           <image src="/images/wx.png" style="width:65px; height:80px; flex: none; margin-top: 10px" bindtap="wxLogin"></image>
      </view>
   </view>  
 

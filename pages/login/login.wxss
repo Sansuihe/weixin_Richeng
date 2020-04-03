@@ -5,7 +5,7 @@ page{
   background-repeat:no-repeat;
 
  -moz-background-size:100% 100%;
-  background-image: url('https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2807052394,944017971&fm=26&gp=0.jpg');
+  /* background-image: url('https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2807052394,944017971&fm=26&gp=0.jpg'); */
 }
  
 .container {
@@ -32,7 +32,7 @@ page{
  
 /*表单内容*/
 .login-from {
-  margin-top: 40px;
+  margin-top: 0px;
   flex: auto;
   height:100%;
 }
@@ -68,6 +68,7 @@ page{
 /*按钮*/
 .bttons{
   display: flex;
+  margin-top: 10px;
   justify-content: center;  /* 水平居中 */
   align-items: center;  /* 垂直居中 */
 }
@@ -85,7 +86,7 @@ page{
   margin-top: 15px;
   color: #fff;
   background-color:#7e8ef0;
-  border: 0.1rpx solid #ccc;
+  /* border: 0.1rpx solid #ccc; */
   border-radius: 40rpx;
 }
  

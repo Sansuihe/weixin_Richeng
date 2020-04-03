@@ -10,10 +10,9 @@
 
 <van-cell bind:click='showPop' title="{{scheduleId.title}}" icon="{{scheduleId.icon}}" border  = '{{true}}' is-link/>
 
-<van-cell-group>
+<van-cell-group >
   <van-field
      placeholder="请输入地点内容"
-     type="textarea"
       autosize
       left-icon="location-o"
       bind:change="onChangesite"
@@ -34,7 +33,6 @@
 <van-cell-group>
   <van-field
      placeholder="请输入备注内容"
-     type="textarea"
       autosize
       left-icon="records"
       bind:change="onChangecomment"
@@ -47,21 +45,11 @@
 
 <van-cell bind:click='repeat' title="重复 {{repeat}}" icon="replay" border  = '{{true}}' is-link/>
 
-<view class="buttons" bindtap="onTabs"><van-button round type="info">√</van-button></view>
+<view class="buttons" bindtap="onTabs">
+    <view class="yuan">√</view>
+</view>
 
-<van-dialog
-  use-slot
-  title="选择日程列表"
-  show="{{ show }}"
-  show-cancel-button
-  bind:close="onClose"
-  bind:confirm = 'onTrue'
-  show-confirm-button ='{{false}}'
-  show-cancel-button = '{{false}}'
-  closeOnClickOverlay = '{{true}}'
->
- <van-cell bind:click='xuanzeliebiao' data-item="{{item}}" wx:for="{{richenglist}}" wx:for-item="item" wx:key="index" title="{{item.title}}" icon="{{item.icon}}" border='{{true}}' is-link/>
-</van-dialog>
+
 
 <van-action-sheet show="{{ remindshow }}" title="提醒" bind:close="onClose">
     <view bindtap='xuanzetixin'  class=" danyuange" data-item="{{item}}" wx:for="{{remindshowList}}" wx:for-item="item" wx:key="index" >
@@ -89,3 +77,17 @@
   bind:cancel='onCloseshowTime'
 />
 </van-action-sheet>
+<van-dialog
+  style='z-index:999 !important'
+  use-slot
+  title="选择日程列表"
+  show="{{ show }}"
+  show-cancel-button
+  bind:close="onClose"
+  bind:confirm = 'onTrue'
+  show-confirm-button ='{{false}}'
+  show-cancel-button = '{{false}}'
+  closeOnClickOverlay = '{{true}}'
+>
+ <van-cell bind:click='xuanzeliebiao' data-item="{{item}}" wx:for="{{richenglist}}" wx:for-item="item" wx:key="index" title="{{item.title}}" icon="{{item.icon}}" border='{{true}}' is-link/>
+</van-dialog>
