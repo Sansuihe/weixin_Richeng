@@ -31,15 +31,15 @@
 
  <view class=" bottom2"> </view>
 
- <view class="list"  wx:for="{{list}}" wx:for-item="item" wx:key='index'>
+ <view class="list"  wx:for="{{list}}"  data-item="{{item}}" wx:for-item="item" wx:key='index' bindtap="deltal">
    <van-icon name="{{item.typeIcon}}" color="#3A8BFF" size="15px" />
    <view class="name">{{item.title}}</view>
   
   <view class="rows">
+        <text style="padding-right:25px;font-size:12px;height: 40px;line-height: 40px;">{{item.num}}</text>
        <view bindtap="coms" wx:if='{{showButton == false}}'  data-item="{{item}}"  class="coment">编辑</view>
         <view bindtap="delScheduleType"  wx:if='{{showButton == false}}' data-item="{{item}}"  class="del">删除</view>
-        <text style="padding-right:8px">{{item.num}}</text>
-        <van-icon  name="arrow" />
+       
   </view>
 </view>
 

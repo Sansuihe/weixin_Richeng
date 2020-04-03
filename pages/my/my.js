@@ -44,6 +44,10 @@ Page({
       url: '../message/message'
    })
   },
+  no(){
+    wx.showLoading({title: '尚在开发中',})
+    setTimeout(function(){wx.hideLoading()},1000)
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -62,7 +66,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.geRen()
   },
 
   /**

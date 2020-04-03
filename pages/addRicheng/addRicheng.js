@@ -34,9 +34,9 @@ Page({
     time1:{'date':'','week':''},
     time2:{'date':'','week':''},
     site:'',
-    comment:'',
+    comment:'',//备注
     remind:'',//{title: "提前五分钟", time: 5},
-    repeat:'',
+    repeat:'',//重复
 
     timeIndex:0,
     show: false,
@@ -236,17 +236,47 @@ Page({
       this.addRichen();
       this.dpTime();
     }else if(data == 2){
-      console.log('id==',options.id);
+      var item = JSON.parse(options.item)
+
+      var time1s = new Date(item.scheduleStartTime).getTime();
+      var time2s = new Date(item.scheduleEndTime).getTime();
+
+      var _week1s= times.js_date_yyyy(time1s);
+      var _week2s= times.js_date_yyyy(time2s);
+
+      var _weekArray = new Array("星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六");
+
+      var _week1 = _weekArray[new Date(_week1s).getDay()];  //注意此处必须是先new一个Date
+      var _week2 = _weekArray[new Date(_week2s).getDay()];  //注意此处必须是先new一个Date
+
+
+
+      console.log('item==',item);
+      console.log(new Date(item.createTime).getTime())
       wx.setNavigationBarTitle({title: '日程编辑' })    
-      this.setData({ type:data });
+      this.setData({
+        title:item.title,
+        scheduleId:{
+          title:item.typeName,
+          id:item.typeId,
+          icon:item.typeIcon,
+        },
+        time1:{'date':item.scheduleStartTime,'week':_week1},
+        time2:{'date':item.scheduleStartTime,'week':_week2},
+        site:item.address,
+        comment:item.remark,
+        remind:'',//{title: "提前五分钟", time: 5},
+        repeat:item.isRepetition,
+        checked:item ==1?true:false
+      });
     }
-   
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
+
   },
 
   /**

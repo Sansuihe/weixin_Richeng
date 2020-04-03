@@ -11,7 +11,7 @@
 .DIV{
   display: flex;
   width: 340px;
-  margin:5px auto 0px;
+  margin:5px 15px 5px;
   /* padding:5px; */
   height: 45px;
 }

@@ -7,12 +7,15 @@ Page({
    */
   data: {
     datas:[],
+    richenglist:[]
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.scheduleType();
     let data = options.data;
+    let id = options.id;
     if(data == 0){
       console.log('data==',options.data);
       wx.setNavigationBarTitle({title: '今日' })
@@ -29,15 +32,16 @@ Page({
       console.log('data==',options.data);
       wx.setNavigationBarTitle({title: '所有' })
       this.all();
+    }else if(id != null){
+      console.log('data==',options.id);
+      wx.setNavigationBarTitle({title: options.title })
+      this.Idall(options.id);
     }
   },
   date(){//今天
     utlis.post(Api.date,true).then((res)=>{
       if(res.code == 0){
-        console.log('res1==',res);
-        this.setData({
-          data:res.data,
-        })
+        this.setData({datas:res.data, })
       }else{
         wx.showLoading({title: res.msg,})
         setTimeout(function(){wx.hideLoading()},1000)
@@ -67,8 +71,6 @@ Page({
   nextWeek(){ //下周
     utlis.get(Api.nextWeek,).then((res)=>{
       if(res.code == 0){
-        var res = res;
-        console.log('==>res',res),
         this.setData({ datas:res.data})
       }else{
         wx.showLoading({title: res.msg,})
@@ -95,19 +97,65 @@ Page({
         setTimeout(function(){wx.hideLoading()},1000)
     });
   },
+  Idall(){
+    utlis.get(Api.schedule+id,).then((res)=>{
+      if(res.code == 0){
+        this.setData({ datas:res.data});
+      }else{
+        wx.showLoading({title: res.msg,})
+        setTimeout(function(){wx.hideLoading()},1000)
+      }
+    }).catch((res)=>{
+      wx.showLoading({title: res.msg,})
+        setTimeout(function(){wx.hideLoading()},1000)
+    });
+  },
 
+  scheduleType(){ //scheduleType
+    console.log('1');
+    utlis.get(Api.scheduleType,).then((res)=>{
+      if(res.code == 0){
+        
+        this.setData({richenglist:res.data })
+      }else{
+        wx.showLoading({title: res.msg,})
+        setTimeout(function(){wx.hideLoading()},1000)
+      }
+    }).catch((res)=>{
+      wx.showLoading({title: res.msg,})
+        setTimeout(function(){wx.hideLoading()},1000)
+    });
+  },
+
+  openTo(e){
+    var item = JSON.stringify(e.currentTarget.dataset.item)
+    wx.navigateTo({url: '../addRicheng/addRicheng?item='+item+'&&data=2'})
+  },
+  delSchedule(e){
+    var id = e.currentTarget.dataset.item.id;
+    utlis.post(Api.delItem+id,).then((res)=>{
+      if(res.code == 0){
+        console.log('1');
+      }else{
+        wx.showLoading({title: res.msg,})
+        setTimeout(function(){wx.hideLoading()},1000)
+      }
+    }).catch((res)=>{
+      wx.showLoading({title: res.msg,})
+        setTimeout(function(){wx.hideLoading()},1000)
+    });
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+   
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
   },
 
   /**

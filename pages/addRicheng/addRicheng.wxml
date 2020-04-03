@@ -49,8 +49,6 @@
     <view class="yuan">√</view>
 </view>
 
-
-
 <van-action-sheet show="{{ remindshow }}" title="提醒" bind:close="onClose">
     <view bindtap='xuanzetixin'  class=" danyuange" data-item="{{item}}" wx:for="{{remindshowList}}" wx:for-item="item" wx:key="index" >
         <text>{{item.title}}</text>
@@ -66,12 +64,13 @@
 </van-action-sheet>
 
 
-<van-action-sheet show="{{ showTime }}" bind:close="onCloseshowTime">
+<van-action-sheet show="{{ showTime }}" close-on-click-overlay = '{{false}}' bind:close="onCloseshowTime">
   <van-datetime-picker
   type="datetime"
   value="{{ currentDate }}"
   min-date="{{ minDate }}"
   max-date="{{ maxDate }}"
+  
   bind:input="onInput"
   bind:confirm='showTime1'
   bind:cancel='onCloseshowTime'

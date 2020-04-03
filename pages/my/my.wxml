@@ -60,20 +60,20 @@
         <text>找回密码</text>
       </view>
     </view>
-    <view class="item">
+    <!-- <view class="item">
       <view class='wallet'>
       <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;</text>
       <image src='../../images/yijian.png' class='iimg'></image>
       <text>意见反馈</text></view>
-    </view>
-    <view class="item">
+    </view> -->
+    <view bindtap="no" class="item">
       <view class='wallet'>
         <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;</text>
         <image src='../../images/guanyu.png' class='iimg'></image>
         <text>关于我们</text>
       </view>
     </view>
-    <view class="item">
+    <view bindtap="no" class="item">
       <view class='wallet'>
         <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;</text>
         <image src='../../images/kefu.png' class='iimg'></image>

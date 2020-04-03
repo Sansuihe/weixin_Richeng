@@ -42,6 +42,35 @@ Page({
   nextWeek(){wx.navigateTo({url: '../details/details?data=2'})},
   Addlist(){wx.navigateTo({url: '../addList/addList'})},
 
+  delScheduleType(e){
+    var id =  Api.delSchedule+e.currentTarget.dataset.item.id;
+    utlis.post(id,).then((res)=>{
+      if(res.code == 0){
+        this.List()
+        wx.showLoading({title: res.msg,})
+        setTimeout(function(){wx.hideLoading()},1000)
+      }else{
+        wx.showLoading({title: res.msg,})
+        setTimeout(function(){wx.hideLoading()},1000)
+      }
+    }).catch((res)=>{
+        wx.showLoading({title: res.msg,})
+        setTimeout(function(){wx.hideLoading()},1000)
+    });
+    console.log(id)
+  },
+  deltal(e){
+    
+    if(this.data.showButton == true){
+      console.log(e.currentTarget.dataset.item);
+      wx.navigateTo({url: '../details/details?id='+e.currentTarget.dataset.item.id+ '&&title='+e.currentTarget.dataset.item.title}) 
+    }
+  },
+  coms(e){
+    var id =  e.currentTarget.dataset.item.id
+    console.log(e.currentTarget.dataset.item)
+    wx.navigateTo({url: '../addList/addList?id='+id})
+  },
   guanli(){
     this.setData({
       showButton:!this.data.showButton

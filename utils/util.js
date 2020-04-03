@@ -33,7 +33,7 @@ function post(url, data = {},isJson = false) {
  */
 function request(url, data = {}, method = "GET",isJson) {
   let cookie = wx.getStorageSync('cookieKey');//取出Cookie
-  console.log('==    cookie' + cookie)
+  // console.log('==    cookie' + cookie)
   wx.showLoading({ title: "正在加载中...",})
   var contentType = isJson ? 'application/json' : "application/x-www-form-urlencoded";
   console.log('类型==',contentType);

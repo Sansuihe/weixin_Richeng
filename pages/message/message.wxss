@@ -6,3 +6,18 @@
   flex-direction: row;
   margin:  10px auto;
 }
+.wx{
+  margin-top: 5px;
+  display: flex;
+  width: 100%;
+  margin-left:15px;
+  font-size: 14px;
+}
+.buton{
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+  width: 100%;
+  height: 100%;
+}

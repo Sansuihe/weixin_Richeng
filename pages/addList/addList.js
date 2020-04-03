@@ -70,8 +70,39 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
+
+  getLi(id){
+    utlis.get(Api.getLi+id,).then((res)=>{
+      if(res.code == 0){
+        this.setData({
+          id:res.data.id,
+          inner:res.data.title,
+          // jop : 
+         })
+      }else{
+        wx.showLoading({title: res.msg,})
+        setTimeout(function(){wx.hideLoading()},1000)
+      }
+    }).catch((res)=>{
+      wx.showLoading({title: res.msg,})
+        setTimeout(function(){wx.hideLoading()},1000)
+    });
+  },
   onLoad: function (options) {
    this.scheduleType();
+   var id = options.id
+   if(id!=null){
+     this.getLi(id)
+    //  var data = JSON.parse(options.id);
+    //  var inners = data.title;
+    // //  var id = data.typeId;
+    //  var typeName = data.typeName;
+    //  this.setData({
+    //    inner:inners,
+    //    jop:typeName,
+    //   //  type:{id:id,}
+    //  })
+   }
   },
 
   /**
