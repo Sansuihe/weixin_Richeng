@@ -1,5 +1,5 @@
 // pages/addRicheng/addRicheng.js
-import Dialog from '/@vant/weapp/dialog/dialog';
+import Dialog from '@vant/weapp/dialog/dialog';
 import times from '../../utils/times';
 import {Api} from '../../utils/api';
 import utlis from '../../utils/util';
@@ -30,12 +30,12 @@ Page({
       {'title':'每年'},
     ],
     title:'',
-    scheduleId:{id: 2, title: "其他", createTime: "2020-03-29 00:45:14", icon: "icontest"},
+    scheduleId:{id: '', title: "请选择列表", createTime: "2020-03-29 00:45:14", icon: ""},
     time1:{'date':'','week':''},
     time2:{'date':'','week':''},
     site:'',
     comment:'',//备注
-    remind:'',//{title: "提前五分钟", time: 5},
+    remind: {'title':'不提醒',time:-1},//{title: "提前五分钟", time: 5},
     repeat:'',//重复
 
     timeIndex:0,
@@ -48,7 +48,7 @@ Page({
     maxHour: 20,
     
     minDate: new Date().getTime(),
-    maxDate: new Date(2050, 10, 1).getTime(),
+    maxDate: new Date(2025, 10, 1).getTime(),
     currentDate: new Date().getTime(),
   },
   onChangetitle (event) {this.setData({ title: event.detail})},
@@ -188,8 +188,8 @@ Page({
         "address":this.data.site,
         'remark':this.data.comment,
         'scheduleId':this.data.scheduleId.id,
-        "scheduleEndTime": this.data.time1.date,
-        "scheduleStartTime": this.data.time2.date,
+        "scheduleEndTime": this.data.time2.date,
+        "scheduleStartTime": this.data.time1.date,
         'isRepetition':this.data.repeat,
         'ahead':this.data.remind.time,
         'any':this.data.checked==true?1:0
@@ -198,9 +198,12 @@ Page({
       ).then((res)=>{
       if(res.code == 0){
         wx.showLoading({title: res.msg,})
-        setTimeout(function () {
-          setTimeout(function(){wx.hideLoading()},1000)
-         }, 1000) //延迟时间 这里是1秒
+          setTimeout(
+            function(){
+              wx.hideLoading();
+              wx.navigateBack({})
+            },1000)
+         
       }else{
         wx.showLoading({title: res.msg,})
         setTimeout(function(){wx.hideLoading()},1000)
@@ -210,11 +213,13 @@ Page({
         setTimeout(function(){wx.hideLoading()},1000)
     });
   },
-  scheduleType(){ //scheduleType类型
-    console.log('1');
-    utlis.get(Api.scheduleType,).then((res)=>{
+  List(){ //列表
+    utlis.get(Api.schedule,).then((res)=>{
       if(res.code == 0){
-        this.setData({richenglist:res.data })
+        var res = res.data;
+        this.setData({
+          richenglist:res.list
+        })
       }else{
         wx.showLoading({title: res.msg,})
         setTimeout(function(){wx.hideLoading()},1000)
@@ -229,7 +234,7 @@ Page({
    */
   onLoad: function (options) {
     let data = options.data;
-    this.scheduleType();
+    this.List();
     if(data == 1 || data == undefined ){
       console.log('data==',options.data);
       wx.setNavigationBarTitle({title: '添加日程' })
@@ -237,7 +242,7 @@ Page({
       this.dpTime();
     }else if(data == 2){
       var item = JSON.parse(options.item)
-
+      console.log('==>',item)
       var time1s = new Date(item.scheduleStartTime).getTime();
       var time2s = new Date(item.scheduleEndTime).getTime();
 
@@ -248,26 +253,32 @@ Page({
 
       var _week1 = _weekArray[new Date(_week1s).getDay()];  //注意此处必须是先new一个Date
       var _week2 = _weekArray[new Date(_week2s).getDay()];  //注意此处必须是先new一个Date
-
-
+      var rem = '';
+      for(var i = 0; i <this.data.remindshowList.length; i++){
+        if(item.ahead == this.data.remindshowList[i].time){
+          rem = this.data.remindshowList[i];
+        }
+      }
 
       console.log('item==',item);
       console.log(new Date(item.createTime).getTime())
       wx.setNavigationBarTitle({title: '日程编辑' })    
       this.setData({
+        id:item.id,
         title:item.title,
         scheduleId:{
-          title:item.typeName,
-          id:item.typeId,
-          icon:item.typeIcon,
+          title:item.scheduleName,
+          id:item.scheduleId,
+          typeIcon:item.typeIcon,
         },
-        time1:{'date':item.scheduleStartTime,'week':_week1},
-        time2:{'date':item.scheduleStartTime,'week':_week2},
         site:item.address,
+        checked:item.any ==1?true:false,
+        time1:{'date':item.scheduleStartTime,'week':_week1},
+        time2:{'date':item.scheduleEndTime,'week':_week2},
         comment:item.remark,
-        remind:'',//{title: "提前五分钟", time: 5},
+        remind:rem,//{title: "提前五分钟", time: 5},
         repeat:item.isRepetition,
-        checked:item ==1?true:false
+       
       });
     }
   },

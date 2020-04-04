@@ -1,6 +1,6 @@
 <!--pages/toimgs/toimgs.wxml-->
-<image style=" width:100%;" src="../../images/3.webp"></image>
-<image  style=" width:100%;height:2500px" src="../../images/2.webp"></image>
-<image  style=" width:100%;height:2000px" src="../../images/1.webp"></image>
+<image style=" width:100%;" src="../../images/3.jpg"></image>
+<image  style=" width:100%;height:2700px" src="../../images/2.jpg"></image>
+<image  style=" width:100%;height:2100px" src="../../images/1.jpg"></image>
 
 

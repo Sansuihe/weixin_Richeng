@@ -12,10 +12,14 @@ Page({
     maxDate: new Date(2029, 1, 31).getTime(),
     time:'',
     show:false,
-    richengList:[]
-   
+    richengList:[],
+    show:false
   },
-
+  addricheng(){
+    wx.navigateTo({
+      url: '../addRicheng/addRicheng?data=1',
+    })
+  },
   formatDate(date) {
     date = new Date(date);
     return `${date.getMonth() + 1}/${date.getDate()}`;
@@ -29,13 +33,16 @@ Page({
     var d= event.detail;
     var date=d.getFullYear() + '-' + ((d.getMonth() + 1) >=10 ?(d.getMonth() + 1) : ('0'+(d.getMonth() + 1))) + '-' + (d.getDate()>=10 ?d.getDate() :('0'+d.getDate())); 
     wx.showLoading({title:date});
-    setTimeout(function(){wx.hideLoading()},500)
+    setTimeout(function(){wx.hideLoading()},1000)
     console.log(date)
-    // console.log(this.data.time)
+    this.setData({
+      time:date
+    })
+    this.date(date);
   },
   date(date){
     var that = this;
-    console.log(date)
+    console.log('-->'.date)
     utlis.post(Api.date,date,true).then((res)=>{
       if(res.code == 0){
         this.setData({
@@ -51,6 +58,34 @@ Page({
     });
   },
 
+  guanlianniu(){
+    this.setData({
+      show :!this.data.show
+    });
+  },
+  delSchedule(e){
+    var that = this;
+    var id = e.currentTarget.dataset.item.id;
+    utlis.post(Api.delItem+id,).then((res)=>{
+      if(res.code == 0){
+        this.date(this.data.time);
+      }else{
+        wx.showLoading({title: res.msg,})
+        setTimeout(function(){wx.hideLoading()},1000)
+      }
+    }).catch((res)=>{
+      wx.showLoading({title: res.msg,})
+        setTimeout(function(){wx.hideLoading()},1000)
+    });
+  },
+  openTo(e){
+    if(this.data.show == false){
+      var item = JSON.stringify(e.currentTarget.dataset.item)
+      wx.navigateTo({url: '../addRicheng/addRicheng?item='+item+'&&data=2'})
+    }
+   
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -58,6 +93,9 @@ Page({
     var d = new Date();
     var date=d.getFullYear() + '-' + ((d.getMonth() + 1) >=10 ?(d.getMonth() + 1) : ('0'+(d.getMonth() + 1))) + '-' + (d.getDate()>=10 ?d.getDate() :('0'+d.getDate())); 
     this.date(date)
+    this.setData({
+      time:date
+    })
   },
 
   /**
@@ -71,7 +109,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+   console.log('11')
+   if(this.data.time!= ''){
+    this.date(this.data.time);
+   }
   },
 
   /**

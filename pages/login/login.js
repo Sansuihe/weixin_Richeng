@@ -57,7 +57,7 @@ Page({
           {   code: res.code},
           ).then((res)=>{
           if(res.code == 0){
-            wx.showLoading({title: '登录中...',})
+            wx.showLoading({title: '微信登录中...',})
             setTimeout(function () {
               wx.switchTab({ url:"/pages/my/my"})
             }, 1000) //延迟时间 这里是1秒

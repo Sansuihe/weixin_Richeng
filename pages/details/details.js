@@ -6,8 +6,17 @@ Page({
    * 页面的初始数据
    */
   data: {
-    datas:[],
-    richenglist:[]
+    datas:[
+      // {
+      //   title:'11',
+      //   scheduleStartTime:'11',
+      //   scheduleEndTime:'1111-11-11 55-55-55 1111-11-11 55-55-55',
+      //   title:'11',
+      // }
+    ],
+    richenglist:[],
+    ids:'',
+    datas:''
   },
   /**
    * 生命周期函数--监听页面加载
@@ -16,6 +25,7 @@ Page({
     this.scheduleType();
     let data = options.data;
     let id = options.id;
+   
     if(data == 0){
       console.log('data==',options.data);
       wx.setNavigationBarTitle({title: '今日' })
@@ -23,23 +33,24 @@ Page({
     }else if(data == 1){
       console.log('data==',options.data);
       wx.setNavigationBarTitle({title: '本周' })
+     
       this.thisWeek();
     }else if(data == 2){
-      console.log('data==',options.data);
+      console.log('data==',data);
       wx.setNavigationBarTitle({title: '下周' })
       this.nextWeek()
     }else if(data == 3){
       console.log('data==',options.data);
-      wx.setNavigationBarTitle({title: '所有' })
+      wx.setNavigationBarTitle({title: '所有' });
       this.all();
     }else if(id != null){
-      console.log('data==',options.id);
+      console.log('data==',options.id);      
       wx.setNavigationBarTitle({title: options.title })
       this.Idall(options.id);
     }
   },
   date(){//今天
-    utlis.post(Api.date,true).then((res)=>{
+    utlis.post(Api.date,{},true).then((res)=>{
       if(res.code == 0){
         this.setData({datas:res.data, })
       }else{
@@ -97,7 +108,8 @@ Page({
         setTimeout(function(){wx.hideLoading()},1000)
     });
   },
-  Idall(){
+
+  Idall(id){ //自定义
     utlis.get(Api.schedule+id,).then((res)=>{
       if(res.code == 0){
         this.setData({ datas:res.data});
@@ -115,7 +127,6 @@ Page({
     console.log('1');
     utlis.get(Api.scheduleType,).then((res)=>{
       if(res.code == 0){
-        
         this.setData({richenglist:res.data })
       }else{
         wx.showLoading({title: res.msg,})
@@ -132,10 +143,15 @@ Page({
     wx.navigateTo({url: '../addRicheng/addRicheng?item='+item+'&&data=2'})
   },
   delSchedule(e){
+    console.log(e.currentTarget.dataset.index)
+    var that = this;
     var id = e.currentTarget.dataset.item.id;
     utlis.post(Api.delItem+id,).then((res)=>{
       if(res.code == 0){
-        console.log('1');
+     this.data.datas.splice(e.currentTarget.dataset.index, 1)
+          this.setData({
+            datas: this.data.datas
+          })
       }else{
         wx.showLoading({title: res.msg,})
         setTimeout(function(){wx.hideLoading()},1000)
@@ -156,6 +172,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+   
+
   },
 
   /**

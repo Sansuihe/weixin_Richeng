@@ -43,8 +43,8 @@
 
 <view class=" wx">
     <view  style="width:70px"  >微信：</view>
-    <view  style="padding-left:20px" wx:if="{{!isWeixin}}" bindtap="bindWx">立即绑定</view> 
-    <view style="padding-left:20px" wx:if="{{isWeixin}}" >已绑定</view> 
+    <view  style="padding-left:20px" wx:if="{{!bindWeChat}}" bindtap="bindWx">立即绑定</view> 
+    <view style="padding-left:20px" wx:if="{{bindWeChat}}" >已绑定</view> 
 </view>
 
 <view class="buton">

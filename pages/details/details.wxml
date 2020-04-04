@@ -5,16 +5,22 @@
     </van-cell-group> -->
     <view class="DIV" bindtap="openTo" data-item='{{item}}'>
        <view class="left">
-            <view  style="font-size:12px;font-weight:bold;height:20px">{{item.title}}</view>
-            <view  style="font-size:25rpx;height:20px;color:red">{{item.scheduleStartTime}} - {{item.scheduleEndTime}}</view>
+            <text class="titlse">{{item.title}}</text>
+            <text  class="subtitle">{{item.scheduleStartTime}} - {{item.scheduleEndTime}}</text>
        </view>
-        <view  class="right">
-            <view style="height:20px"><van-icon name="{{forId(item.forId)}}"  size="12px"/></view>
-            <view style="font-size:12px"><van-icon name="{{forId(item.forId)}}" size="10px" />22222</view>
+        <view  class="right"> 
+            <view style="height:30px "><van-icon name="underway-o"  size="15px"/></view>
+            <view style="font-size:15px;color:grey">
+            <van-icon size="15px" style="margin-right:5px" name="{{item.typeIcon}}"  />{{item.typeName}}</view>
        </view>
     </view>
     <view slot="right" class="van-swipe-cell__right">
-    <van-button bind:click='openTo' data-item='{{item}}' type="primary">编辑</van-button>
-    <van-button bind:click='delSchedule' data-item='{{item}}' type="warning">删除</van-button>
+      <view bindtap="openTo" class="bianji"  data-item='{{item}}'  > 编辑</view>
+      <view bindtap="delSchedule" class="shancu"  data-item='{{item}}' data-index='{{index}}'  > 删除</view>
+    <!-- <van-button style="height:54px" bind:click='openTo' data-item='{{item}}' type="primary">编辑</van-button> -->
+    <!-- <van-button bind:click='' data-item='{{item}}' type="warning"></van-button> -->
     </view>
   </van-swipe-cell>
+    <view wx:if="{{datas.length == 0}}" class="noimg">
+        <image wx:if="{{datas.length == 0}}"  mode = 'center' class="noimg" src="../../images/no.jpg" ></image>
+    </view>

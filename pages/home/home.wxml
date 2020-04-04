@@ -11,26 +11,31 @@
  <view class="richen">
     <view style="width:100%; display:flex;justify-content:space-between">
         <text class="jiachu">今天日程</text>
-        <text>今天日程</text>
+        <text>{{richengList.length}}</text>
     </view>
     <view class=" bottom2"> </view>
 
-    <view class="richengs" wx:for="{{richengList}}" wx:for-item="item" wx:key='index'>
+    <view class="richengs" wx:for="{{richengList}}" wx:for-item="item" wx:key='index'  bindtap="openTo"  data-item="{{item}}">
       <view class="lefts">
           <view style="height：15px;font-size:12px;font-weight:bold">{{item.title}}</view>
           <view style="height：15px;font-size:12px;color:blue;font-weight:bold">{{item.scheduleEndTime}}</view>
-          <view style="height：15px;font-size:8px;color:grey;">{{item.remark}}</view>
+          <view style="height：15px;font-size:8px;color:grey;">
+               <van-icon name="{{item.typeIcon}}" />
+               {{item.typeName}}
+               {{item.remark}}
+          </view>
       </view>
-      <text class="del">删除</text> 
+      <text wx:if='{{show}}' bindtap="delSchedule"  data-item="{{item}}" class="del">删除</text> 
     </view>
+    <view style="padding-top:120px"></view>
     <view wx:if="{{richengList.length == 0}}" class="noimg">
         <image wx:if="{{richengList.length == 0}}"  mode = 'center' class="noimg" src="../../images/no.jpg" ></image>
     </view>
  </view>
 
- <view   class="round-click">
+ <view class="round-click" bindtap="addricheng">
    <navigator style="color:white;font-size: 12px;" url='/pages/addRicheng/addRicheng?data=1' >添加</navigator >
 </view>
- <view wx:if="{{richengList.length != 0}}" class="round-click2">
+ <view bindtap="guanlianniu" wx:if="{{richengList.length != 0}}" class="round-click2">
    <text style="color:white;font-size: 12px;">管理</text>
 </view>

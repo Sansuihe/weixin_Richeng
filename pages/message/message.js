@@ -10,6 +10,7 @@ Page({
    */
   data: {
     isWeixin:true,
+    bindWeChat:false,
     isDisabled:false,
     userName:'',
     userphone:'',
@@ -30,6 +31,10 @@ Page({
           {   code: res.code},
           ).then((res)=>{
           if(res.code == 0){
+            this.setData({
+            
+              bindWeChat:true
+            })
             wx.showLoading({title: res.msg,})
             setTimeout(function () {
               setTimeout(function(){wx.hideLoading()},1000) }, 1000) //延迟时间 这里是1秒
@@ -83,6 +88,7 @@ Page({
           userName:res.data.name,
           userphone:res.data.mobile,
           Olduserphone:res.data.mobile,
+          bindWeChat:res.data.bindWeChat
         })
       }else{
         wx.showLoading({title: res.msg,})

@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "van-calendar":"@vant/weapp/calendar"
+    "van-calendar":"@vant/weapp/calendar",
+    "van-icon": "/@vant/weapp/icon/"
   }
 }

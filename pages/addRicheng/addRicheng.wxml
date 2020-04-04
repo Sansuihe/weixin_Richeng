@@ -8,7 +8,7 @@
   />
 </van-cell-group>
 
-<van-cell bind:click='showPop' title="{{scheduleId.title}}" icon="{{scheduleId.icon}}" border  = '{{true}}' is-link/>
+<van-cell bind:click='showPop' title="{{scheduleId.title}}" icon="{{scheduleId.typeIcon}}" border  = '{{true}}' is-link/>
 
 <van-cell-group >
   <van-field
@@ -45,9 +45,6 @@
 
 <van-cell bind:click='repeat' title="重复 {{repeat}}" icon="replay" border  = '{{true}}' is-link/>
 
-<view class="buttons" bindtap="onTabs">
-    <view class="yuan">√</view>
-</view>
 
 <van-action-sheet show="{{ remindshow }}" title="提醒" bind:close="onClose">
     <view bindtap='xuanzetixin'  class=" danyuange" data-item="{{item}}" wx:for="{{remindshowList}}" wx:for-item="item" wx:key="index" >
@@ -90,3 +87,7 @@
 >
  <van-cell bind:click='xuanzeliebiao' data-item="{{item}}" wx:for="{{richenglist}}" wx:for-item="item" wx:key="index" title="{{item.title}}" icon="{{item.icon}}" border='{{true}}' is-link/>
 </van-dialog>
+
+<view class="buttons" bindtap="onTabs">
+    <view class="yuan"><van-icon name="success" /></view>
+</view>

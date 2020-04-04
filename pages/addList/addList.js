@@ -1,5 +1,5 @@
 // pages/addList/addList.js
-import Dialog from '/@vant/weapp/dialog/dialog';
+import Dialog from '@vant/weapp/dialog/dialog';
 import {Api} from '../../utils/api';
 import utlis from '../../utils/util';
 Page({

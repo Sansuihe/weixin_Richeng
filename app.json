@@ -1,13 +1,13 @@
 {
   "pages": [
+    "pages/login/login",
     "pages/list/list", 
-    "pages/my/my", 
-    "pages/details/details",
+    "pages/addRicheng/addRicheng",
     "pages/home/home", 
+    "pages/details/details",
+    "pages/my/my", 
     "pages/listsetting/listsetting",
     "pages/message/message",
-    "pages/login/login",
-    "pages/addRicheng/addRicheng",
     "pages/toimgs/toimgs",
     "pages/Administrators/Administrators", 
     "pages/addList/addList",
@@ -18,8 +18,8 @@
     "pages/personal/personal"
   ],
   "tabBar": {  
-    "color": "#a9b7b7",  
-    "selectedColor": "#11cd6e",  
+    "color": "#707070",  
+    "selectedColor": "#2FA3DF",  
     "borderStyle":"white",  
     "list": [
       {  

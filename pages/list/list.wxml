@@ -36,7 +36,7 @@
    <view class="name">{{item.title}}</view>
   
   <view class="rows">
-        <text style="padding-right:25px;font-size:12px;height: 40px;line-height: 40px;">{{item.num}}</text>
+        <text class="txt" style="font-size:16px; color:grey;height: 40px;line-height: 40px;">{{item.num}}</text>
        <view bindtap="coms" wx:if='{{showButton == false}}'  data-item="{{item}}"  class="coment">编辑</view>
         <view bindtap="delScheduleType"  wx:if='{{showButton == false}}' data-item="{{item}}"  class="del">删除</view>
        

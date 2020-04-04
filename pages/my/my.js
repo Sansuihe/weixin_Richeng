@@ -11,6 +11,7 @@ Page({
    */
   data: {
     name:'',
+    mobile:'',
   },
 
   forgetCode(){
@@ -19,16 +20,22 @@ Page({
    })
   },
   admins(){
-    wx.navigateTo({
-      url: '../Administrators/Administrators'
-   })
+    if(this.data.mobile == '15979820103'){
+      wx.navigateTo({
+        url: '../Administrators/Administrators'
+     })
+    }else{
+      wx.showLoading({title: '您还不是管理员'})
+      setTimeout(function(){wx.hideLoading()},1000)
+    }
   },
   geRen(){
     utlis.get(Api.auth,).then((res)=>{
       if(res.code == 0){
-        console.log('res1==',res)
         this.setData({
-          name:res.data.name
+          name:res.data.name,
+          mobile:res.data.mobile,
+          
         })
       }else{
         wx.showLoading({title: res.msg,})
@@ -36,7 +43,6 @@ Page({
       }
     }).catch((res)=>{
       console.log('res3==',res)
-      Toast.fail(res.msg);
     });
   },
   ziliao(){

@@ -1,4 +1,4 @@
-const heards = 'http://192.168.1.178:8899/schedule';
+const heards = 'http://schedule.natapp1.cc/schedule';
 
 const Api = {
   auth: heards+'/auth',//信息
